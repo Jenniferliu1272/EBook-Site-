@@ -19,8 +19,8 @@ from bookSell import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
-    url(r'^(?P<book_id>[0-9]+)/$', views.bookPage, name='bookPage'),
-
+    url(r'^book/(?P<book_id>[0-9]+)/$', views.bookPage, name='bookPage'),
+    url(r'^user/(?P<user_id>[0-9]+)/$', views.userPage, name='userPage'),
 ]
 
 
