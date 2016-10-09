@@ -23,6 +23,6 @@ class BookForSale(models.Model):
 	sold = models.BooleanField(default=False)
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 	userSelling = models.ForeignKey(User, related_name="users_selling")
-	userBought = models.ForeignKey(User, related_name="user_bought")
+	userBought = models.ForeignKey(User, related_name="user_bought", blank=True, null=True)
 
 
