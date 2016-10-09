@@ -1,0 +1,12 @@
+Name: {{book.title}}
+<br>
+Description: {{book.description}}
+<br>
+Author: {{book.author}}
+<br>
+Copies for sale:
+<ul>
+{% for book in books_for_sale %}
+	<li> Book: {{book.cost}}
+{% endfor %}
+</ul>
