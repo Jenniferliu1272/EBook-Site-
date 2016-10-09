@@ -77,13 +77,15 @@ WSGI_APPLICATION = 'bookSell.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'C:/Program Files/MySQL/MySQL Server 5.7/BookWormsConnection',
-        'USER': 'user',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+
 
 
 # Password validation
