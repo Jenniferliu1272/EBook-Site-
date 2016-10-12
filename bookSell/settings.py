@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'bookSell.apps.BookSellConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bookSell',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,16 +77,14 @@ WSGI_APPLICATION = 'bookSell.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'bookonline',
+           'USER': 'root',
+           'PASSWORD': '',
+           'HOST': '',
+           'PORT': ''
+        }
 }
-
-
 
 
 # Password validation
@@ -119,7 +117,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
