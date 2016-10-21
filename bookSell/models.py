@@ -11,12 +11,32 @@ class Book(models.Model):
     year_published = models.IntegerField()
     description = models.CharField(max_length=500)
     rating = models.IntegerField()
+
+    genreChoices = (
+		(0, 'Science fiction'),
+		(1, 'Drama'),
+		(2, 'Action and Adventure'),
+		(3, 'Romance'),
+		(4, 'Mystery'),
+		(5, 'Health'),
+		(6, 'Children\'s'),
+		(7, 'Science'),
+		(8, 'History'),
+		(9, 'Biographies')
+    	)
+
+    genre = models.IntegerField(
+        max_length=1,
+        choices=genreChoices,
+    )
+
     def __str__(self):
     	return self.title
 
     def _get_books_for_sale_count(self):
     	return len(BookForSale.objects.filter(book=self.id))
     books_for_sale_count = property(_get_books_for_sale_count)
+
 
 
 class BookForSale(models.Model):
