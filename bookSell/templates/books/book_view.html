@@ -1,3 +1,13 @@
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<a href = "{% url 'index' %}"> homepage </a>
+<br>
+
 Name: {{book.title}}
 <br>
 Description: {{book.description}}

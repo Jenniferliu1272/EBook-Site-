@@ -14,6 +14,10 @@ class Book(models.Model):
     def __str__(self):
     	return self.title
 
+    def _get_books_for_sale_count(self):
+    	return len(BookForSale.objects.filter(book=self.id))
+    books_for_sale_count = property(_get_books_for_sale_count)
+
 
 class BookForSale(models.Model):
     cost = models.IntegerField()

@@ -7,6 +7,9 @@ def index(request):
     top_books = Book.objects.order_by('-rating')[:5]
     return render(request, 'books/index.html', {'top_books': top_books})
 
+def bookList(book):
+    books_for_sale_len = len(BookForSale.objects.filter(book=book_id))
+
 def bookPage(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     books_for_sale = BookForSale.objects.filter(book=book_id)

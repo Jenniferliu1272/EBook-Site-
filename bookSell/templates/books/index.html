@@ -1,10 +1,30 @@
-{% if top_books %}
-	Top Selling Books
-    <ul>
-    {% for book in top_books %}
-        <li><a href="{% url 'bookPage' book.id %}">{{ book.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No books are available.</p>
-{% endif %}
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<div class="page-header">
+	<h1> BookSell<small> Online site for selling used books </small></h1>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+	{% if top_books %}
+		Top Rated Books
+		<ul class="list-group">
+	  		{% for book in top_books %}
+				<li class="list-group-item">
+					<a href="{% url 'bookPage' book.id %}">{{ book.title }}</a> by {{book.author}}
+					<span class="badge">{{book.books_for_sale_count}} for sale</span>
+				</li>
+	    	{% endfor %}
+		</ul>
+	{% else %}
+	    <p>No books are available.</p>
+	{% endif %}
+	</div>
+</div>
+
