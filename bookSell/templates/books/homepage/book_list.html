@@ -1,0 +1,13 @@
+{% if books %}
+	{{ title }}
+	<ul class="list-group">
+	{% for book in books %}
+		<li class="list-group-item">
+			<a href="{% url 'bookPage' book.id %}">{{ book.title }}</a> by {{book.author}}
+			<span class="badge">{{book.books_for_sale_count}} for sale</span>
+		</li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No books are available.</p>
+{% endif %}

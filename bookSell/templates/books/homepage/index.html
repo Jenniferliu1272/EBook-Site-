@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="row">
+	<h2> Browse </h2>
+</div>
+<div class = "row">
+  	<div class="col-md-4">
+		{% include "books/homepage/book_list.html" with books=top_books title="Top Rated Books" %}
+	</div>
+    <div class="col-md-4">
+		{% include "books/homepage/book_list.html" with books=new_books title="New Books" %}
+	</div>
+</div>
+
+{% endblock %}
