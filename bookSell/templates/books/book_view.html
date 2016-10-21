@@ -6,7 +6,8 @@ Author: {{book.author}}
 <br>
 Copies for sale:
 <ul>
+
 {% for book in books_for_sale %}
-	<li> Book: {{book.cost}}
+    {% include "books/book_for_sale.html" %}    
 {% endfor %}
 </ul>

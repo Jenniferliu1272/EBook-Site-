@@ -21,6 +21,17 @@ class BookForSale(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     userSelling = models.ForeignKey(User, related_name="users_selling")
     userBought = models.ForeignKey(User, related_name="user_bought", blank=True, null=True)
+    conditionChoices = (
+        ('poor', 'Poor'),
+        ('fair', 'Fair'),
+        ('good', 'Good'),
+        ('new', 'New'),
+    )
+    condition = models.CharField(
+        max_length=4,
+        choices=conditionChoices,
+    )
+
     def __str__(self):
     	return self.book.title + " sold by " + self.userSelling.username
 
