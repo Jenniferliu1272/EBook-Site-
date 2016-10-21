@@ -26,13 +26,13 @@ class BookForSale(models.Model):
     userSelling = models.ForeignKey(User, related_name="users_selling")
     userBought = models.ForeignKey(User, related_name="user_bought", blank=True, null=True)
     conditionChoices = (
-        ('poor', 'Poor'),
-        ('fair', 'Fair'),
-        ('good', 'Good'),
-        ('new', 'New'),
+        (0, 'Poor'),
+        (1, 'Fair'),
+        (2, 'Good'),
+        (3, 'New'),
     )
-    condition = models.CharField(
-        max_length=4,
+    condition = models.IntegerField(
+        max_length=1,
         choices=conditionChoices,
     )
 

@@ -10,9 +10,9 @@
 <h3> Copies For Sale: </h3>
 
 <table class="table">
-	<th> Condition </th>
-	<th> Cost </th>
-	<th> Sold By </th>
+	<th><a href="?sort=condition"> Condition </a></th>
+	<th><a href="?sort=cost"> Cost </a></th>
+	<th><a href="?sort=userSelling"> Sold By </a></th>
 	{% for book in books_for_sale %}
 	    {% include "books/book_for_sale.html" %}    
 	{% endfor %}
