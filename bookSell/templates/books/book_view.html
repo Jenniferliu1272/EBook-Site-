@@ -1,23 +1,20 @@
-{% load bootstrap3 %}
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+{% extends "base.html" %}
 
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-<a href = "{% url 'index' %}"> homepage </a>
-<br>
+{% block content %}
 
-Name: {{book.title}}
-<br>
-Description: {{book.description}}
-<br>
-Author: {{book.author}}
-<br>
-Copies for sale:
-<ul>
+<div class="page-header">
+  <h1>{{book.title}} <small>by {{book.author}}</small></h1>
+</div>
+<p> {{book.description}} </p>
 
-{% for book in books_for_sale %}
-    {% include "books/book_for_sale.html" %}    
-{% endfor %}
-</ul>
+<h3> Copies For Sale: </h3>
+
+<table class="table">
+	<th> Condition </th>
+	<th> Cost </th>
+	<th> Sold By </th>
+	{% for book in books_for_sale %}
+	    {% include "books/book_for_sale.html" %}    
+	{% endfor %}
+</table>
+{% endblock %}

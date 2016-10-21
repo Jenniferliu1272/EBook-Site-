@@ -5,10 +5,8 @@ from .models import Book, BookForSale
 
 def index(request):
     top_books = Book.objects.order_by('-rating')[:5]
-    return render(request, 'books/index.html', {'top_books': top_books})
-
-def bookList(book):
-    books_for_sale_len = len(BookForSale.objects.filter(book=book_id))
+    new_books = Book.objects.order_by('-year_published')[:5]
+    return render(request, 'books/homepage/index.html', {'top_books': top_books, 'new_books': new_books})
 
 def bookPage(request, book_id):
     book = get_object_or_404(Book, pk=book_id)

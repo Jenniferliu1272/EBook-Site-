@@ -17,4 +17,4 @@ tests/.coverage
 build/
 tests/report/
 booksell/migrations
-booksell/.idea/
+.idea/
