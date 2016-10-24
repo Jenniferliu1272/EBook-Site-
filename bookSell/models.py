@@ -2,7 +2,8 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.contrib.auth import authenticate, login, logout
+from django.conf import settings
 
 # Create your models here.
 class Book(models.Model):
@@ -28,6 +29,7 @@ class Book(models.Model):
     genre = models.IntegerField(
         max_length=1,
         choices=genreChoices,
+		default=0
     )
 
     def __str__(self):
@@ -59,5 +61,29 @@ class BookForSale(models.Model):
     def __str__(self):
     	return self.book.title + " sold by " + self.userSelling.username
 
+class UserManager(models.Manager):
+    def register(self, userName, password, fname, lname, email, phone):
+        
+		user = User.objects.create_user(username=userName, password=password, email=email, first_name=fname, last_name=lname, phone=phone)
+		ourUser = ourUser(user=user)
+		user.ourUser = ourUser
+		return user
+		
+    def login(self, userName, password, request=None):
+        user = authenticate(username=userName, password=password)
+        # global namespace auth login
+        if request != None:
+			login(request, user)
+        return user
 
+class ourUser(models.Model):
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='ourUser')
+	first_name = models.CharField(max_length=30)
+	last_name = models.CharField(max_length=30)
+	email = models.CharField(max_length=30)
+	phone = models.CharField(max_length=30)
+	
+	def __str__(self):
+		s =  "%s %s\n" % (self.user.first_name, self.user.last_name)
+		return s
 
