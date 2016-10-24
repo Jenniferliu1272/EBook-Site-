@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^book/(?P<book_id>[0-9]+)/$', views.bookPage, name='bookPage'),
     url(r'^user/(?P<user_id>[0-9]+)/$', views.userPage, name='userPage'),
-	url(r'^register/', views.registerPage, name='registerPage'),
+	url(r'^register/', views.registerPage, name='register'),
     ]
 
 

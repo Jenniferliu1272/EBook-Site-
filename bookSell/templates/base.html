@@ -22,10 +22,10 @@
 	<h1> <a href= "{% url 'index' %}" class ="title">BookSell </a></button></h1>
 	<ul class="nav nav-pills">
 		<a class="navbar-brand" href="{% url 'index' %}">Navigation Bar Here</a>
+        <a class="navbar-brand" href="{% url 'register' %}">Register</a>
+
 	</ul>
 	
-	<a href="/register/">Register </a>
-
     <div id="content" class = "row">
   		<div class="col-md-8 col-md-offset-2">
         	{% block content %}{% endblock %}

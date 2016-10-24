@@ -11,6 +11,7 @@ from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
+    # two modules being displayed on top of page
     top_books = Book.objects.order_by('-rating')[:5]
     new_books = Book.objects.order_by('-year_published')[:5]
 
@@ -21,6 +22,7 @@ def index(request):
     return render(request, 'books/homepage/index.html', {'top_books': top_books, 'new_books': new_books, 'book_by_genre' : genre_books, 'genres' : genres, 'genre': genres[int(genre)]})
 
 
+# page sorting on bookPage
 headers = {'cost':'asc',
          'condition':'asc',
          'userSelling':'asc',}
