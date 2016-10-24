@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
-
+from constants import genres
 # Create your models here.
 class Book(models.Model):
     title = models.CharField(max_length=200)
@@ -12,24 +12,12 @@ class Book(models.Model):
     year_published = models.IntegerField()
     description = models.CharField(max_length=500)
     rating = models.IntegerField()
-
-    genreChoices = (
-		(0, 'Science fiction'),
-		(1, 'Drama'),
-		(2, 'Action and Adventure'),
-		(3, 'Romance'),
-		(4, 'Mystery'),
-		(5, 'Health'),
-		(6, 'Children\'s'),
-		(7, 'Science'),
-		(8, 'History'),
-		(9, 'Biographies')
-    	)
-
+    genreChoices = []
+    for index, genre in enumerate(genres):
+        genreChoices.append((index, genre))
     genre = models.IntegerField(
         max_length=1,
-        choices=genreChoices,
-		default=0
+        choices=tuple(genreChoices)
     )
 
     def __str__(self):

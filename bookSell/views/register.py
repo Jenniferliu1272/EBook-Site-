@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404,render_to_response,redirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import *
-from .models import ourUser, Book, BookForSale
+from bookSell.forms import *
+from bookSell.models import ourUser, Book, BookForSale
 from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q

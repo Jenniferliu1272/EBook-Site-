@@ -1,7 +1,7 @@
 from django.conf.urls import include, url
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404,render_to_response,redirect
-from .models import ourUser, Book, BookForSale
+from bookSell.models import ourUser, Book, BookForSale
 from django.db.models import Q
 
 # page sorting on bookPage
