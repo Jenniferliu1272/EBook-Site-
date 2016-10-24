@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div>You searched for: {{ query }} </div>
+    <br>
+    {% include "books/homepage/book_list.html" with books=books title="Search Results" %}
+
+{% endblock %}

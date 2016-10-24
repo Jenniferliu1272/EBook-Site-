@@ -9,6 +9,7 @@ from .forms import *
 from .models import ourUser, Book, BookForSale
 from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q
 
 def index(request):
     # two modules being displayed on top of page
@@ -40,7 +41,12 @@ def bookPage(request, book_id):
 
 def userPage(request, user_id):
     return HttpResponse("You're looking at user %s." % user_id)
-	
+
+def search(request):
+    query = request.GET['q']
+    results = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
+    return render(request, 'books/search_results.html', {'query':query, 'books':results})
+
 def registerPage(request):
 	def get(self, request):
 		c = getStaticContext()
