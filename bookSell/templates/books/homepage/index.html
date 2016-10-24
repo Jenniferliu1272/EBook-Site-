@@ -7,12 +7,35 @@
 	<h2> Browse </h2>
 </div>
 <div class = "row">
-  	<div class="col-md-8">
+  	<div class="col-md-4">
 		{% include "books/homepage/book_list.html" with books=top_books title="Top Rated Books" %}
 	</div>
-    <div class="col-md-8">
+    <div class="col-md-4">
 		{% include "books/homepage/book_list.html" with books=new_books title="New Books" %}
 	</div>
 </div>
-
+<div class="row">
+	<h2> By Genre </h2>
+	<div class="dropdown">
+  		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{genre}}
+    		<span class="caret"></span>
+ 	 	</button>
+	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	  	{% for genre in genres %}
+	    	<li><a href="?genre={{forloop.counter0}}">{{genre}}</a></li>
+	   {% endfor %}
+	  </ul>
+	</div>
+</div>
+<div class = "row">
+	{% if book_by_genre %}
+		{% for book in book_by_genre %}
+	  		<div class="col-md-2">
+				{% include "books/homepage/one_book_view.html" with book=book%}
+			</div>
+		{% endfor %}
+	{% else %}
+		No books for sale in genre {{genre}} currently
+	{% endif %}
+</div>
 {% endblock %}
