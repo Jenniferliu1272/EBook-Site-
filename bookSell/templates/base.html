@@ -2,6 +2,10 @@
 {# Load CSS and JavaScript #}
 {% bootstrap_javascript %}
 {% bootstrap_css %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bookSell/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'bookSell/GoodDog-fontfacekit/stylesheet.css' %}" />
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
@@ -10,32 +14,50 @@
 <html lang="en">
 <head>
     <title>{% block title %} Book Sell{% endblock %}</title>
-    <style type="text/css">
-    	a.title:link { color:#000; text-decoration:none; font-weight:normal; }
-		a.title:visited { color: #000; text-decoration:none; font-weight:normal; }
-		a.title:hover { color: #000; text-decoration:none; font-weight:normal; }
-		a.title:active { color: #000; text-decoration:none; font-weight:normal; }
-    </style>
+    <!--<style type="text/css">
+    </style>-->
 </head>
 
 
 <!-- navigation bar here -->
+<div class="header">
+    <img class="logo img-responsive center-block" src="{% static 'bookSell/images/logo.png' %}" alt="My image"/>
+    <h1> EcoBooks </h1>
+
+</div>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- header -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">BookSell</a>
+    <div>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
+
     <!-- left side -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a class="navbar-brand" href="{% url 'index' %}">Homepage</a></li>
        </ul>
       <form method="get" action="/results/" class="navbar-form navbar-left">
-        <div class="form-group">
+        <div class="form-group search_option">
           <input type="text" id="searchBox" class="form-control" name="q">
         </div>
-        <input type="submit" class="btn" value="Search" >
+          <div class="dropdown navbar-left">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{genre}}
+                    <span class="caret"></span>
+                </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                {% for genre in genres %}
+                    <li><a href="?genre={{forloop.counter0}}">{{genre}}</a></li>
+               {% endfor %}
+              </ul>
+          </div>
+          <input type="submit" class="btn" value="Search" >
       </form>
 
       <!-- right side -->

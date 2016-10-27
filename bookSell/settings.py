@@ -41,6 +41,12 @@ INSTALLED_APPS = [
     'bootstrap3'
     ]
 
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,9 +85,9 @@ WSGI_APPLICATION = 'bookSell.wsgi.application'
 DATABASES = {
     'default': {
            'ENGINE': 'django.db.backends.mysql',
-           'NAME': 'bookonline',
+           'NAME': 'django_db',
            'USER': 'root',
-           'PASSWORD': '',
+           'PASSWORD': '123',
            'HOST': '',
            'PORT': ''
         }

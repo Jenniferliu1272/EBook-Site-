@@ -27,3 +27,8 @@ def search(request):
     query = request.GET['q']
     results = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
     return render(request, 'books/search_results.html', {'query':query, 'books':results})
+
+def condition_view(request):
+    canView = True
+    return render(request, 'books/book_view.html', )
+

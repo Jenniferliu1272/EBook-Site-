@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "header.html" %}
 
 {% block content %}
 
@@ -12,6 +12,7 @@
 
 <table class="table">
 	<th><a href="?sort=condition"> Condition </a></th>
+
 	<th><a href="?sort=cost"> Cost </a></th>
 	<th><a href="?sort=userSelling"> Sold By </a></th>
 	{% for book in books_for_sale %}
