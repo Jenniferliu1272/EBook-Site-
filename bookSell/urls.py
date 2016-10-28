@@ -20,13 +20,12 @@ from bookSell import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
-    url(r'^book/(?P<book_id>[0-9]+)/$', views.bookPage, name='bookPage'),
-    url(r'^user/(?P<user_id>[0-9]+)/$', views.userPage, name='userPage'),
+    url(r'^book/(?P<book_id>[0-9]+)/$', views.book, name='book'),
 	url(r'^register/', views.registerPage, name='register'),
     url(r'^results/$', views.search, name='search'),
     url(r'^sell/Part1/(?P<book_id>[0-9]+)?', views.sell_book_view_p1, name='sell'),
     url(r'^sell2/Part2/(?P<book_id>[0-9]+)?', views.sell_book_view_p2, name='sell2'),
-
+    url(r'^genre/(?P<genre>.*)/$', views.genre, name='genre'),
     ]
 
 

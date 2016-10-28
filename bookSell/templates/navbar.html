@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <!-- when register is complete, welcome will display the user it is using  {{ request.user }}-->
-            <p class="navbar-text">Welcome! </p>
-            <li><a href="{% url 'register' %}">Sign up</a></li>
+            <li> <a href="{% url 'index' %}"> Welcome! </a> </li>
+            <li><a href="{% url 'register'%}">Sign up</a></li>
             <li><a href="#">Login</a></li>
             <form method="get" action="/results/" class="navbar-form navbar-left">
                 <div class="input-group search_option">
@@ -22,7 +22,7 @@
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">Browse By Genre <b class="caret"></b></a>
               <ul class="dropdown-menu" id="menu1">
                 {% for genre in genres %}
-                  <li><a href="">{{genre}}</a></li>
+                  <li><a href="{% url 'genre' genre %}">{{genre}}</a></li>
                 {% endfor %}
               </ul>
             </li>
