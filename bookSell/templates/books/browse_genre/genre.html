@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>{{genre}}</h1>
+</div>
+
+
+<div class = "row">
+    <div class="col-md-5">
+        <h2>Newest Book</h2>
+        {% include "books/homepage/one_book_view.html" with book=new_book%}
+
+        <h2>Most Popular Book</h2>
+        {% include "books/homepage/one_book_view.html" with book=top_book%}
+
+    </div>
+    <br>
+    <div class="col-md-5">
+        {% include "books/homepage/book_list.html" with books=books title="Top Rated Books" %}
+    </div>
+</div>
+{% endblock %}
