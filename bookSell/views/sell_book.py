@@ -6,29 +6,6 @@ from bookSell.forms import *
 from django.db.models import Q
 from bookSell.constants import genres
 
-# page sorting on bookPage
-headers = {'cost':'asc',
-         'condition':'asc',
-         'userSelling':'asc',}
-def book(request, book_id):
-    sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
-    book = get_object_or_404(Book, pk=book_id)
-    books_for_sale = BookForSale.objects.filter(book=book_id).order_by(sort)
-    if headers[sort] == "des":
-        books_for_sale = books_for_sale.reverse()
-        headers[sort] = "asc"
-    else:
-        headers[sort] = "des"
-    return render(request, 'books/individual_book/book_view.html', {'book': book, 'books_for_sale': books_for_sale, 'genres' : genres})
-
-def search(request):
-    query = request.GET['q']
-    results = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
-    return render(request, 'books/search/search_results.html', {'query':query, 'books':results, 'genres' : genres})
-
-def genre(request, genre):
-    return render(request, 'books/genre_page/genre_page.html', {'genre': genre, 'genres' : genres})
-
 def condition_view(request):
     canView = True
     return render(request, 'books/individual_book/book_view.html', )

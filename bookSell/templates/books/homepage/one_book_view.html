@@ -1,5 +1,5 @@
 <h1>{{book.title}} <small>by {{book.author}}</small></h1>
 <h5> Rating of {{book.rating}}</h5>
-<a href="{% url 'bookPage' book.id %}">
+<a href="{% url 'book' book.id %}">
 	<span class="badge">{{book.books_for_sale_count}} for sale</span>
 </a>

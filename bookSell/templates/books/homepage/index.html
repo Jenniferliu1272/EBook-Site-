@@ -6,6 +6,8 @@
 <div class="row">
 	<h2> Browse </h2>
 </div>
+
+
 <div class = "row">
   	<div class="col-md-5">
 		{% include "books/homepage/book_list.html" with books=top_books title="Top Rated Books" %}
@@ -14,6 +16,8 @@
 		{% include "books/homepage/book_list.html" with books=new_books title="New Books" %}
 	</div>
 </div>
+
+
 <div class="row">
 	<h2> By Genre </h2>
 	<div class="dropdown">
@@ -27,6 +31,8 @@
 	  </ul>
 	</div>
 </div>
+
+
 <div class = "row">
 	{% if book_by_genre %}
 		{% for book in book_by_genre %}
