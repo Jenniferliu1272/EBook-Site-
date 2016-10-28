@@ -1,0 +1,41 @@
+<div class="nav navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <!-- when register is complete, welcome will display the user it is using  {{ request.user }}-->
+            <p class="navbar-text">Welcome! </p>
+            <li><a href="{% url 'register' %}">Sign up</a></li>
+            <li><a href="#">Login</a></li>
+            <form method="get" action="/results/" class="navbar-form navbar-left">
+                <div class="input-group search_option">
+                  <input type="text" id="searchBox" class="form-control" name="q" placeholder="Search for...">
+                    <span class="input-group-btn">
+                    <input class="btn btn-default" type="submit" value="Search">
+                  </span>
+                </div><!-- /input-group -->
+            </form>
+        </ul>
+        <!-- right side -->
+          <!-- Direct to EcoBook Logging Page -->
+          <ul class="personal nav nav-pills navbar-right">
+       
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Browse By Genre <b class="caret"></b></a>
+              <ul class="dropdown-menu" id="menu1">
+                {% for genre in genres %}
+                  <li><a href="">{{genre}}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
+            <li><a href="{% url 'sell' %}">Sell</a></li>
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">My Eco Scrapbook <b class="caret"></b></a>
+              <ul class="dropdown-menu" id="menu1">
+                <li><a href="#">My Collection</a></li>
+                  <li><a href="#">Selling</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Purchase History</a></li>
+              </ul>
+            </li>
+          </ul>
+    </div>
+</div>

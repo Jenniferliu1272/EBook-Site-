@@ -1,0 +1,5 @@
+<h1>{{book.book.title}} <small>by {{book.book.author}}</small></h1>
+<h5> Rating of {{book.condition}}</h5>
+<a href="{% url 'bookPage' book.book.id %}">
+	<span class="badge"> For only ${{book.cost}}</span>
+</a>

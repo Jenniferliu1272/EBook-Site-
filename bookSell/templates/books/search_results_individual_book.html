@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+<div class="panel-heading" role="tab" id="headingOne">
+  <h4 class="panel-title">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      {{book}}
+    </a>
+  </h4>
+</div>
+<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+  <div class="panel-body">
+    <table class="table">
+    <th><a href="?sort=condition"> Condition </a></th>
+    <th><a href="?sort=cost"> Cost </a></th>
+    <th><a href="?sort=userSelling"> Sold By </a></th>
+    {% for bookForSale in book.books_for_sale %}
+        {% include "books/book_for_sale.html" with book=bookForSale%}
+    {% endfor %}
+</table>
+  </div>
+</div>
+</div>
