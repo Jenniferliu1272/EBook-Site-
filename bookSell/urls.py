@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from bookSell import views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
@@ -23,6 +24,8 @@ urlpatterns = [
     url(r'^user/(?P<user_id>[0-9]+)/$', views.userPage, name='userPage'),
 	url(r'^register/', views.registerPage, name='register'),
     url(r'^results/$', views.search, name='search'),
+    url(r'^sell/Part1/(?P<book_id>[0-9]+)?', views.sell_book_view_p1, name='sell'),
+    url(r'^sell2/Part2/(?P<book_id>[0-9]+)?', views.sell_book_view_p2, name='sell2'),
 
     ]
 

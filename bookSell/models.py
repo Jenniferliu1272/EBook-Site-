@@ -50,6 +50,33 @@ class BookForSale(models.Model):
     def __str__(self):
         return self.book.title + " sold by " + self.userSelling.username
 
+
+class sellBookForm(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=200)
+    description = models.CharField(max_length=500)
+    year_published = models.IntegerField()
+    rating = models.IntegerField()
+    genreChoices = []
+    for index, genre in enumerate(genres):
+        genreChoices.append((index, genre))
+    genre = models.IntegerField(
+        choices=tuple(genreChoices)
+    )
+    cost = models.IntegerField()
+    conditionChoices = (
+        (0, 'Poor'),
+        (1, 'Fair'),
+        (2, 'Good'),
+        (3, 'New'),
+    )
+    condition = models.IntegerField(
+        max_length=1,
+        default=3,
+        choices=conditionChoices,
+    )
+
+
 class UserManager(models.Manager):
     def register(self, userName, password, fname, lname, email, phone):
         
@@ -75,4 +102,3 @@ class ourUser(models.Model):
     def __str__(self):
         s =  "%s %s\n" % (self.user.first_name, self.user.last_name)
         return s
-
