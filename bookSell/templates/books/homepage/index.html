@@ -28,8 +28,10 @@
 	  	{% for genre in genres %}
 	    	<li><a href="?genre={{forloop.counter0}}">{{genre}}</a></li>
 	   {% endfor %}
-	  </ul>
+	  </ul>	
+	  <a href="{% url 'genre' genre %}">View more</a>
 	</div>
+
 </div>
 
 
