@@ -77,28 +77,14 @@ class sellBookForm(models.Model):
     )
 
 
-class UserManager(models.Manager):
-    def register(self, userName, password, fname, lname, email, phone):
-        
-        user = User.objects.create_user(username=userName, password=password, email=email, first_name=fname, last_name=lname, phone=phone)
-        ourUser = ourUser(user=user)
-        user.ourUser = ourUser
-        return user
+class UserProfile(models.Model):
+	# This line is required. Links UserProfile to a User model instance.
+	user = models.OneToOneField(User)
 
-    def login(self, userName, password, request=None):
-        user = authenticate(username=userName, password=password)
-        # global namespace auth login
-        if request != None:
-            login(request, user)
-        return user
-
-class ourUser(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='ourUser')
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    email = models.CharField(max_length=30)
-    phone = models.CharField(max_length=30)
-
-    def __str__(self):
-        s =  "%s %s\n" % (self.user.first_name, self.user.last_name)
-        return s
+    # The additional attributes we wish to include.
+	rating = models.CharField(max_length=30)
+	phone = models.CharField(max_length=30)
+	
+	# Override the __unicode__() method to return out something meaningful!
+	def __unicode__(self):
+		return self.user.username

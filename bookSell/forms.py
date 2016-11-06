@@ -4,10 +4,17 @@ from bookSell.models import *
 from django.contrib.admin import widgets
 from django.contrib.auth.models import User
 
-class registerationForm(forms.ModelForm):
-	class Meta:
-		model = ourUser
-		fields = ['first_name','last_name','email','phone']
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ["rating"]
 
 class sell_book_form_p1(forms.ModelForm):
     class Meta:
