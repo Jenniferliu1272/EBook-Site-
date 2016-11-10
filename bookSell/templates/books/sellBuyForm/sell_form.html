@@ -17,13 +17,14 @@
             </a>
             <br/><br/>
             <div class="panel panel-default">
-              <div class="panel-heading">Sell Original Version</div>
+              <div class="panel-heading">Sell {{ book.title }}</div>
             </div>
             <div class="panel panel-default">
               <div class="panel-heading">Give us more information about your book</div>
               <div class="panel-body">
                 Cost: {{ sell_form.cost }}
                 <div class="padding">Condition: {{ sell_form.condition }}</div>
+                {{ book_sale.cost }}
               </div>
             </div>
             <div class="panel panel-default">

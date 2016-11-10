@@ -18,3 +18,5 @@ build/
 tests/report/
 booksell/migrations
 .idea/
+/bookSell/settings.py
+/bookSell/migrations/

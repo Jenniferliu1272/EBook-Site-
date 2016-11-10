@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f28210d-fa0a-41ad-8945-9ec782e294b9" name="Default" comment="Creat">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/static/bookSell/images/library_sell_background.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/static/bookSell/images/temp_logo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/static/bookSell/script.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/static/bookSell/sell_form.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/static/bookSell/sell_result.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/header.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/searchExisting.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_confirm.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_original.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_result.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookSell/templates/footer.html" />
+    <list default="true" id="9f28210d-fa0a-41ad-8945-9ec782e294b9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/constants.py" afterPath="$PROJECT_DIR$/bookSell/constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/forms.py" afterPath="$PROJECT_DIR$/bookSell/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/models.py" afterPath="$PROJECT_DIR$/bookSell/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/settings.py" afterPath="$PROJECT_DIR$/bookSell/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/static/bookSell/style.css" afterPath="$PROJECT_DIR$/bookSell/static/bookSell/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/base.html" afterPath="$PROJECT_DIR$/bookSell/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/books/homepage/book_list.html" afterPath="$PROJECT_DIR$/bookSell/templates/books/homepage/book_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/books/homepage/index.html" afterPath="$PROJECT_DIR$/bookSell/templates/books/homepage/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/books/search/search_results.html" afterPath="$PROJECT_DIR$/bookSell/templates/books/search/search_results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/books/sell_buy_form/sellForm.html" afterPath="$PROJECT_DIR$/bookSell/templates/books/sell_buy_form/sellForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/navbar.html" afterPath="$PROJECT_DIR$/bookSell/templates/navbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/books/individual_book/book_for_sale.html" afterPath="$PROJECT_DIR$/bookSell/templates/books/individual_book/book_for_sale.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/books/individual_book/book_view.html" afterPath="$PROJECT_DIR$/bookSell/templates/books/individual_book/book_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_confirm.html" afterPath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_confirm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html" afterPath="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/urls.py" afterPath="$PROJECT_DIR$/bookSell/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/views/register.py" afterPath="$PROJECT_DIR$/bookSell/views/register.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookSell/views/sell_book.py" afterPath="$PROJECT_DIR$/bookSell/views/sell_book.py" />
     </list>
     <ignored path="DataManagementProject.iws" />
@@ -42,17 +24,39 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/bookSell/models.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="390">
+                    <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+                    <folding>
+                      <element signature="e#0#39#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="DataManagementProject" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sell_book.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sell_book.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookSell/views/sell_book.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="41" column="66" selection-start-line="41" selection-start-column="66" selection-end-line="41" selection-end-column="66" />
+            <state relative-caret-position="255">
+              <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -60,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookSell/forms.py">
+      <file leaf-file-name="sell_form.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="47" column="66" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
+            <state relative-caret-position="300">
+              <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -73,50 +77,50 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookSell/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="32" column="71" selection-start-line="32" selection-start-column="71" selection-end-line="32" selection-end-column="71" />
+            <state relative-caret-position="375">
+              <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
               <folding>
-                <marker date="1478737664000" expanded="true" signature="750:751" ph="..." />
+                <marker date="1478793809000" expanded="true" signature="750:751" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchExisting.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/searchExisting.html">
+      <file leaf-file-name="book_list.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/homepage/book_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="21" selection-start-line="7" selection-start-column="12" selection-end-line="20" selection-end-column="21" />
+            <state relative-caret-position="255">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookSell/views/register.py">
+      <file leaf-file-name="genre.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/browse_genre/genre.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+            <state relative-caret-position="225">
+              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="75" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sell_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html">
+      <file leaf-file-name="one_book_view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/homepage/one_book_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/header.html">
+      <file leaf-file-name="sell_result.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_result.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+            <state relative-caret-position="75">
+              <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -125,28 +129,28 @@
       <file leaf-file-name="sell_confirm.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_confirm.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+            <state relative-caret-position="150">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sell_original.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_original.html">
+      <file leaf-file-name="book_for_sale.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/individual_book/book_for_sale.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="49" />
+            <state relative-caret-position="90">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sell_result.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_result.html">
+      <file leaf-file-name="book_view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookSell/templates/books/individual_book/book_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="60">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="20" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -169,9 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bookSell/__init__.py" />
-        <option value="$PROJECT_DIR$/bookSell/migrations/__init__.py" />
-        <option value="$PROJECT_DIR$/bookSell/views.py" />
         <option value="$PROJECT_DIR$/bookSell/views/bookForSellDetails.py" />
         <option value="$PROJECT_DIR$/bookSell/templates/books/homepage/book_condition.html" />
         <option value="$PROJECT_DIR$/templates/sidebar.html" />
@@ -210,22 +211,25 @@
         <option value="$PROJECT_DIR$/bookSell/static/bookSell/sell_result.css" />
         <option value="$PROJECT_DIR$/bookSell/templates/books/homepage/book_list.html" />
         <option value="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/selll_form.html" />
-        <option value="$PROJECT_DIR$/bookSell/models.py" />
         <option value="$PROJECT_DIR$/bookSell/forms.py" />
         <option value="$PROJECT_DIR$/bookSell/static/bookSell/sell_form.css" />
         <option value="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_original.html" />
-        <option value="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html" />
         <option value="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/header.html" />
         <option value="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_result.html" />
-        <option value="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_confirm.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/bookSell/models.py" />
         <option value="$PROJECT_DIR$/bookSell/urls.py" />
         <option value="$PROJECT_DIR$/bookSell/views/sell_book.py" />
+        <option value="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html" />
+        <option value="$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_confirm.html" />
+        <option value="$PROJECT_DIR$/bookSell/templates/books/individual_book/book_view.html" />
+        <option value="$PROJECT_DIR$/bookSell/templates/books/individual_book/book_for_sale.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="25" />
-    <option name="y" value="23" />
+    <option name="x" value="-1304" />
+    <option name="y" value="-202" />
     <option name="width" value="1255" />
     <option name="height" value="777" />
   </component>
@@ -367,6 +371,58 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sellBuyForm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataManagementProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataManagementProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bookSell" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="books" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="individual_book" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataManagementProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataManagementProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bookSell" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="books" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="homepage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -660,14 +716,21 @@
       <option name="project" value="LOCAL" />
       <updated>1477668187171</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Almost done with Sell Forms&#10;Missing:&#10;-Confirmation Details">
+      <created>1478790094683</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1478790094683</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="25" y="23" width="1255" height="777" extended-state="6" />
-    <editor active="false" />
+    <frame x="-1304" y="-202" width="1255" height="777" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22285251" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22285251" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16058394" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -720,7 +783,8 @@
     <MESSAGE value="Made changes to html" />
     <MESSAGE value="Created Sell Form &#10;and Made improvements to UI" />
     <MESSAGE value="Fixed Book" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Book" />
+    <MESSAGE value="Almost done with Sell Forms&#10;Missing:&#10;-Confirmation Details" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost done with Sell Forms&#10;Missing:&#10;-Confirmation Details" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -747,14 +811,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sellForm.html" />
     <entry file="file://$PROJECT_DIR$/bookSell/views/generalViews.py" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/test.html" />
     <entry file="file://$PROJECT_DIR$/bookSell/static/bookSell/search_result.css.html" />
     <entry file="file://$PROJECT_DIR$/bookSell/static/bookSell/images/library_sell_background.jpg">
@@ -808,20 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/individual_book/book_for_sale.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/individual_book/book_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookSell/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -836,45 +878,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/homepage/one_book_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/homepage/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/homepage/book_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookSell/templates/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -906,13 +913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/browse_genre/genre.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookSell/templates/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -920,52 +920,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_original.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="32" column="71" selection-start-line="32" selection-start-column="71" selection-end-line="32" selection-end-column="71" />
-          <folding>
-            <marker date="1478737664000" expanded="true" signature="750:751" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_confirm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -994,23 +952,137 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="100" column="26" selection-start-line="100" selection-start-column="26" selection-end-line="100" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_original.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/homepage/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/homepage/one_book_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bookSell/views/sell_book.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="41" column="66" selection-start-line="41" selection-start-column="66" selection-end-line="41" selection-end-column="66" />
+        <state relative-caret-position="255">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookSell/models.py">
+    <entry file="file://$PROJECT_DIR$/bookSell/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        <state relative-caret-position="375">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <marker date="1478793809000" expanded="true" signature="750:751" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/homepage/book_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/browse_genre/genre.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_confirm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/individual_book/book_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="20" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/individual_book/book_for_sale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookSell/templates/books/sellBuyForm/sell_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

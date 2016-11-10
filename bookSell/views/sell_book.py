@@ -21,16 +21,20 @@ def sell_search(request):
     except:
         return render(request, 'books/sellBuyForm/sell_result.html')
 
-def sell_existing(request, book_id):
+def sell_existing(request, book_id, back):
     if request.method == 'POST':
         current_form = sell_form_existing(request.POST)
         if current_form.is_valid():
             current_form.save_sellFormExisiting(book_id=book_id)
-            return render(request, 'books/sellBuyForm/sell_confirm.html', {'sell_form': current_form})
+            curr_book = Book.objects.get(id=book_id)
+            current_form = sell_form_existing(request.POST, instance=curr_book)
+            return render(request, 'books/sellBuyForm/sell_confirm.html', {'sell_form': current_form, 'book': curr_book})
         else:
             return render(request, 'books/sellBuyForm/sell_form.html', {'sell_form': sell_form_existing()})
     else:
-        return render(request, 'books/sellBuyForm/sell_form.html', {'sell_form': sell_form_existing()})
+        curr_book = Book.objects.get(id=book_id)
+        return render(request, 'books/sellBuyForm/sell_form.html', {'sell_form': sell_form_existing(),
+                                                                        'book': curr_book})
 
 def sell_original(request):
     if request.method == 'POST':
@@ -38,11 +42,10 @@ def sell_original(request):
         current_form = sell_form_existing(request.POST)
         if current_form.is_valid():
             new_book = current_og_form.save_sellFormOriginal()
+            current_form = current_form.save_sellFormExisiting(book_id=new_book.id)
             book_obj = Book.objects.get(id=new_book.id)
-            new_book_sale = BookForSale.objects.get(book=book_obj)
-            current_form.save_sellFormExisiting(book_id=new_book.id)
-
-            return render(request, 'books/sellBuyForm/sell_confirm.html', {'book': new_book, 'book_sale': new_book_sale})
+            #current_form = sell_form_existing(request.POST, instance=book_obj)
+            return render(request, 'books/sellBuyForm/sell_confirm.html', {'book': book_obj, 'sell_form': current_form })
         else:
             return render(request, 'books/sellBuyForm/sell_original.html', {'sell_form': sell_form_existing(),
                                                                         'sell_form_add': sell_form_original()})

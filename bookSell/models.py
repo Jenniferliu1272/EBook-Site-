@@ -74,6 +74,7 @@ class BookForSale(models.Model):
 
 
 
+
 class sellBookForm(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
