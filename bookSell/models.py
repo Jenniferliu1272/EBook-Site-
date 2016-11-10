@@ -28,13 +28,34 @@ class Book(models.Model):
         return len(BookForSale.objects.filter(book=self.id))
     books_for_sale_count = property(_get_books_for_sale_count)
 
-
+    def get_genre(self):
+        if self.genre == 0:
+            return "Science Fiction"
+        elif self.genre == 1:
+            return "Drama"
+        elif self.genre == 2:
+            return "Action and Adventure"
+        elif self.genre == 3:
+            return "Romance"
+        elif self.genre == 4:
+            return "Mystery"
+        elif self.genre == 5:
+            return "Health"
+        elif self.genre == 6:
+            return "Children's"
+        elif self.genre == 7:
+            return "Science"
+        elif self.genre == 8:
+            return "History"
+        elif self.genre == 9:
+            return "Biographies"
 
 class BookForSale(models.Model):
     cost = models.IntegerField()
     sold = models.BooleanField(default=False)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    userSelling = models.ForeignKey(User, related_name="users_selling")
+    #Set to null for purpose of testing
+    userSelling = models.ForeignKey(User, null=True, related_name="users_selling")
     userBought = models.ForeignKey(User, related_name="user_bought", blank=True, null=True)
     conditionChoices = (
         (0, 'Poor'),
@@ -48,7 +69,9 @@ class BookForSale(models.Model):
     )
 
     def __str__(self):
-        return self.book.title + " sold by " + self.userSelling.username
+        return self.book.title
+        #+" sold by " + self.userSelling.username
+
 
 
 class sellBookForm(models.Model):

@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
+
+<script src="{% static 'bookSell/script.js' %}"></script>
+
 {% block content %}
     <nav aria-label="Page navigation">
       <ul class="pagination">
@@ -7,8 +11,22 @@
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
-        <li><a href="{% url 'sell' new_book.id %}">Basic Information</a></li>
-        <li><a href="{% url 'sell2' new_book.id %}">Buyers Information</a></li>
+        <li><a href="">
+            <form class="pag-form" action="{% url 'sell' %}" method="POST">
+                <input type="submit" value="Basic Information">
+            </form>
+        </a></li>
+         {% if sellform.is_valid == False %}
+            {{ sellform.errors }}
+            <li><a href="">
+                <form class="pag-form" action="{% url 'sell2' %}" method="POST">
+                    <input type="submit" value="Basic Information">
+                </form>
+            </a></li>
+          {% else %}
+            {{ sellform.is_valid }}
+            <li><a id="buyersInfo" onclick="this.parentNode.submit()" href="{% url 'sell2' new_book.id %}">Buyers Information</a></li>
+          {% endif %}
         <li>
           <a href="{% url 'sell2' new_book.id %}" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
@@ -19,6 +37,15 @@
     {% if status == False %}
     <form action="{% url 'sell' new_book.id %}" method="POST">
         {% csrf_token %}
+        {% for books in all_books %}
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle">Books<b class="caret"></b></a>
+          <ul class="dropdown-menu" id="menu1">
+            <li id="?=books{{forloop.counter0}}">{{ books }}</li>
+          </ul>
+        </li>
+        <p>If we do not support the book you just sold, you may fill
+            in the information and be the first to sell your book on our website</p>
         {{ sellform }}
         <input type="submit" class="btn btn-default dropdown-toggle" value="Next">
     </form>

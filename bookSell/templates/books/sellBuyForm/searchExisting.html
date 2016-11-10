@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bookSell/sell_form.css' %}" />
+    <div id="background" class="row">
+        <div class="row outer-box">
+             <form method="get" action="{% url 'sell_search' %}" class="search_form center-block">
+                    <div class="row inner-box">
+                        <p class="seller_note">What do you want to sell?</p>
+                    </div>
+                    <div class="row inner-box">
+                         <div class="input-group search_option">
+                          <input type="text" id="searchBox" class="search_field form-control" name="q" placeholder="Search for...">
+
+                            <span class="input-group-btn">
+                                <input id="search" class="search_submit btn btn-default" type="submit" value="Search">
+                            </span>
+                         </div><!-- /input-group -->
+                    </div>
+              </form>
+        </div>
+     </div>
+{% endblock %}

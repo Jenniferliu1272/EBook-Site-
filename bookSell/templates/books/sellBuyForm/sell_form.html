@@ -1,0 +1,47 @@
+{% load static %}
+
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_javascript %}
+{% bootstrap_css %}
+
+{% block content %}
+    {% include "books/sellBuyForm/header.html" %}
+
+    <!-- Form -->
+    <div class="col-md-8 col-md-offset-2">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <a href="{% url 'sell_search' %}">
+                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Change your category or item
+            </a>
+            <br/><br/>
+            <div class="panel panel-default">
+              <div class="panel-heading">Sell Original Version</div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">Give us more information about your book</div>
+              <div class="panel-body">
+                Cost: {{ sell_form.cost }}
+                <div class="padding">Condition: {{ sell_form.condition }}</div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">Payment Information</div>
+              <div class="panel-body">
+                <h4>How you'll get paid</h4>
+                <h6>PayPal email address</h6>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    useremail@host.com
+                    <!--When user registration is done -->
+                    <!--{{ request.user.email }}-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input class="sell-btn btn btn-default" type="submit" value="Sell">
+        </form>
+    </div>
+    <!-- EndForm -->
+{% endblock %}

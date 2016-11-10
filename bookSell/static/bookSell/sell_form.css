@@ -1,0 +1,38 @@
+#background{
+    background-image: url("images/library_sell_background.jpg");
+    opacity: 0.7;
+    background-attachment: fixed;
+    background-position: center;
+    height: 800px;
+    width:100%;
+}
+
+.search_form{
+    width:50%;
+    padding-top:20%;
+}
+.search_field, .search_submit{
+    height:50px;
+}
+.search_submit{
+    background-color:#0b7223;
+    color:white;
+    border:#0b7223;
+    opacity:1;
+}
+
+.search_submit:hover{
+    opacity:0.7;
+}
+
+.seller_note{
+    color:white;
+    font-size:30px;
+    padding-top:15px;
+    font-weight:light;
+}
+
+.inner-box{
+    background-color:black;
+    padding:1px 30px 20px 30px;
+}

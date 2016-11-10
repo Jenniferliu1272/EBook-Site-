@@ -103,3 +103,8 @@ footer {
    text-align:center;
    margin-top:-55px;
 }
+
+.pag-form{
+    background:transparent;
+    border:none;
+}

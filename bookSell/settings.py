@@ -97,9 +97,9 @@ WSGI_APPLICATION = 'bookSell.wsgi.application'
 DATABASES = {
     'default': {
            'ENGINE': 'django.db.backends.mysql',
-           'NAME': 'bookonline',
+           'NAME': 'django_db',
            'USER': 'root',
-           'PASSWORD': '',
+           'PASSWORD': '123',
            'HOST': '',
            'PORT': ''
         }

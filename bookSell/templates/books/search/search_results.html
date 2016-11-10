@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-    <div>You searched for: {{ query }} </div>
-    <br>
-    {% include "books/homepage/book_list.html" with books=books title="Search Results" %}
+    <div class="col-md-8 col-md-offset-2">
+        <div>You searched for: {{ query }} </div>
+        <br>
+        {% include "books/homepage/book_list.html" with books=books title="Search Results" %}
+    </div>
 
 {% endblock %}

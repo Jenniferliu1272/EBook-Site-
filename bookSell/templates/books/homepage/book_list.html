@@ -5,6 +5,10 @@
 		<li class="list-group-item">
 			<a href="{% url 'book' book.id %}">{{ book.title }}</a> by {{book.author}}
 			<span class="badge">{{book.books_for_sale_count}} for sale</span>
+			{% if condition == True %}
+				<br/><br/>
+				<a class="option" href="{% url 'sell_existing' book.id %}">Sell one like this</a>
+			{% endif%}
 		</li>
 	{% endfor %}
 	</ul>

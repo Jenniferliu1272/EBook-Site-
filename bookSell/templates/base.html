@@ -19,6 +19,7 @@
 </head>
 
 <body>
+    <!-- navigation bar here -->
     <div class="header">
         <img class="logo img-responsive center-block" src="{% static 'bookSell/images/logo.png' %}" alt="My image"/>
         <h1 id="logo_text"> EcoBooks </h1>
@@ -26,72 +27,17 @@
     </div>
 
   <!-- navigation bar here -->
-  {% include "navbar.html" %}    
+  {% include "navbar.html" %}
 
   <!-- Content -->
   <div id="content" class = "row">
-      <div class="col-md-8 col-md-offset-2">
-          {% block content %}{% endblock %}
-      </div>
+      <!--<div class="col-md-8 col-md-offset-2">-->
+      {% block content %}{% endblock %}
+      <!--</div>-->
   </div>
-    <!-- Footer -->
-    <!--<footer>
-        <div class="center-block-custom row">
-            <div class="col-lg-3">
-                <ul class="to_float">
-                <li><a href="#"><strong>Sell</strong></a></li>
-                <li><a href="#">EcoBook Selling Standards</a></li>
-                <li><a href="#">Understanding EcoBook Sell Cycle</a></li>
-                </ul>
-             </div>
-            <div class="col-lg-2">
-            <ul class="to_float">
-                <li><a style="font-size:bold;" href="#"><strong>About EcoBook</strong></a></li>
-                <li><a href="#">Company Culture</a></li>
-                <li><a href="#">Marketing Team</a></li>
-                <li><a href="#">Developer Team</a></li>
-            </ul>
-            </div>
-            <div class="col-lg-3">
-            <ul class="to_float">
-                <li><a style="font-size:bold;" href="#"><strong>Help & Contact</strong></a></li>
-                <li><a href="#">Seller Information Center</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-            </div>
-        </div>
-    </footer>-->
 
-    <footer>
-      <div class="container">
-          <div class="container">
-              <div class="row footer-row">
-                <div class="footer-col col-md-4">
-                  <ul>
-                    <li><a href="#"><strong>Sell</strong></a></li>
-                    <li><a href="#">EcoBook Selling Standards</a></li>
-                    <li><a href="#">Understanding EcoBook Sell Cycle</a></li>
-                    <li><a href="{% url 'sell' %}">Sell Book</a></li>
-                  </ul>
-                </div>
-                <div class="footer-col col-md-4">
-                   <ul>
-                        <li><a style="font-size:bold;" href="#"><strong>About EcoBook</strong></a></li>
-                        <li><a href="#">Company Culture</a></li>
-                        <li><a href="#">Marketing Team</a></li>
-                        <li><a href="#">Developer Team</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col col-md-4">
-                  <ul>
-                    <li><a style="font-size:bold;" href="#"><strong>Help & Contact</strong></a></li>
-                    <li><a href="#">Seller Information Center</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                  </ul>
-                </div>
-              </div>
-          </div>
-      </div>
-    </footer>
+  <!-- Footer -->
+  {% include "footer.html" %}
+
 </body>
 </html>

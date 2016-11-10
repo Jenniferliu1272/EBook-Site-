@@ -23,9 +23,14 @@ urlpatterns = [
 	url(r'^book/(?P<book_id>[0-9]+)/$', views.book, name='book'),
 	url(r'^register/', views.register, name='register'),
 	url(r'^results/$', views.search, name='search'),
-	url(r'^sell/Part1/(?P<book_id>[0-9]+)?', views.sell_book_view_p1, name='sell'),
-	url(r'^sell2/Part2/(?P<book_id>[0-9]+)?', views.sell_book_view_p2, name='sell2'),
+	url(r'^sell/$', views.sell_view, name='sell'),
 	url(r'^genre/(?P<genre>.*)/$', views.genre, name='genre'),
-	]
+
+	#Sell Urls
+	url(r'^sell/$', views.sell_view, name='sell'),
+	url(r'^sell_results/$', views.sell_search, name='sell_search'),
+	url(r'sell_existing/(?P<book_id>[0-9]+)/$', views.sell_existing, name="sell_existing"),
+	url(r'^sell_original/', views.sell_original, name='sell_original'),
+]
 
 

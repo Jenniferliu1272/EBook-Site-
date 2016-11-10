@@ -1,0 +1,12 @@
+{% load static %}
+
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_javascript %}
+{% bootstrap_css %}
+
+{% block content %}
+    {% include "books/sellBuyForm/header.html" %}
+    {{ book }}
+    {{ book_sale }}
+{% endblock %}
