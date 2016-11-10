@@ -7,54 +7,63 @@
 
 {% block content %}
     {% include "books/sellBuyForm/header.html" %}
+    <style>
+        .sell-btn{
+            width:100%
+        }
+    </style>
     <!-- Form -->
     <div class="col-md-8 col-md-offset-2">
-        <form action="{% url 'index' %}" method="POST">
-            {% csrf_token %}
-            <a href="{% url 'sell_existing' book.id %}">
-                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Change Details
-            </a>
-            <br/><br/>
-            <div class="panel panel-default">
-              <div class="panel-heading">Seller Confirmation Receipt</div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">Book Information</div>
+        <a href="{% url 'sell_existing' book.id %}">
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Change Details
+        </a>
+        <br/><br/>
+        <div class="panel panel-default">
+          <div class="panel-heading">Seller Confirmation Receipt</div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Book Information</div>
+          <div class="panel-body">
+            Title: {{ book.title }}
+            <div class="padding">Author: {{ book.author }}</div>
+            <div class="padding">Description: {{ book.description }}</div>
+            <div class="padding">year_description: {{ book.year_description }}</div>
+            <div class="padding">rating: {{ book.rating }}</div>
+            <div class="padding">genre: {{ book.genre }}</div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <form action="{% url 'sell_existing' book.id %}" method="POST">
+              <div class="panel-heading">Additional Information Added By You</div>
               <div class="panel-body">
-                Title: {{ book.title }}
-                <div class="padding">Author: {{ book.author }}</div>
-                <div class="padding">Description: {{ book.description }}</div>
-                <div class="padding">year_description: {{ book.year_description }}</div>
-                <div class="padding">rating: {{ book.rating }}</div>
-                <div class="padding">genre: {{ book.genre }}</div>
+                Cost: {{ sell_form.cost }}
+                <div class="padding">Condition: {{ sell_form.condition }}</div>
+              </div>
+              <input class="sell-btn btn btn-default" type="submit" value="Update">
+          </form>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Payment Information</div>
+          <div class="panel-body">
+            <h4>How you'll get paid</h4>
+            <h6>PayPal email address</h6>
+            <div class="panel panel-default">
+              <div class="panel-body">
+                useremail@host.com
+                <!--When user registration is done -->
+                <!--{{ request.user.email }}-->
               </div>
             </div>
-            <div class="panel panel-default">
-              <form action="{% url 'sell_existing' book.id %}" method="POST">
-                  <div class="panel-heading">Additional Information Added By You</div>
-                  <div class="panel-body">
-                    Cost: {{ sell_form.cost }}
-                    <div class="padding">Condition: {{ sell_form.condition }}</div>
-                  </div>
-                  <input class="sell-btn btn btn-default" type="submit" value="Update">
-              </form>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading">Payment Information</div>
-              <div class="panel-body">
-                <h4>How you'll get paid</h4>
-                <h6>PayPal email address</h6>
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    useremail@host.com
-                    <!--When user registration is done -->
-                    <!--{{ request.user.email }}-->
-                  </div>
-                </div>
-              </div>
-            </div>
-            <input class="sell-btn btn btn-default" type="submit" value="Confirm">
-        </form>
+          </div>
+        </div>
+        <div class="well well-lg">
+          <center>Thank you for contributing to EcoBooks!
+          We hope your experience selling with us was a pleasant one.</center>
+          <div class="center">
+            <a class="center-btn btn btn-default" href="{% url 'index' %}">Confirm</a>
+            <a class="center-btn btn btn-default" href="{% url 'index' %}">Cancel</a>
+          </div>
+        </div>
     </div>
     <!-- EndForm -->
 {% endblock %}
