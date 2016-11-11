@@ -53,6 +53,8 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_DIR,'static')
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = '/'
+
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
@@ -97,9 +99,9 @@ WSGI_APPLICATION = 'bookSell.wsgi.application'
 DATABASES = {
     'default': {
            'ENGINE': 'django.db.backends.mysql',
-           'NAME': 'django_db',
+           'NAME': 'bookonline',
            'USER': 'root',
-           'PASSWORD': '123',
+           'PASSWORD': '',
            'HOST': '',
            'PORT': ''
         }

@@ -4,7 +4,11 @@
             <!-- when register is complete, welcome will display the user it is using  {{ request.user }}-->
             <li> <a href="{% url 'index' %}"> Welcome! </a> </li>
             <li><a href="{% url 'register'%}">Sign up</a></li>
-            <li><a href="#">Login</a></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url 'login'%}">Login</a></li>
+			{% else %}
+			<li><a href="{% url 'login'%}">Login</a></li>
+			{% endif %}
             <form method="get" action="/results/" class="navbar-form navbar-left">
                 <div class="input-group search_option">
                   <input type="text" id="searchBox" class="form-control" name="q" placeholder="Search for...">

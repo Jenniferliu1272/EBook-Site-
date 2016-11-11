@@ -16,12 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from bookSell import views
+import django.contrib.auth.views
+from django.contrib.auth.views import login
 
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
 	url(r'^$', views.index, name='index'),
 	url(r'^book/(?P<book_id>[0-9]+)/$', views.book, name='book'),
 	url(r'^register/', views.register, name='register'),
+	url(r'^login/', django.contrib.auth.views.login, name='login'),
 	url(r'^results/$', views.search, name='search'),
 	url(r'^sell/$', views.sell_view, name='sell'),
 	url(r'^genre/(?P<genre>.*)/$', views.genre, name='genre'),

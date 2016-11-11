@@ -3,10 +3,16 @@
 {% block content %}
 
 <div class="col-md-8 col-md-offset-2">
+
+	{% if user.is_authenticated %}
+	<h1>Hello {{ user.username }}!</h1>
+	{% else %}
+	<h1>Hello!</h1>
+	{% endif %}
+
 	<div class="row">
 		<h2> Browse </h2>
 	</div>
-
 
 	<div class = "row">
 		<div class="col-md-5">
