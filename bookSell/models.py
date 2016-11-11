@@ -70,6 +70,7 @@ class BookForSale(models.Model):
 
     def __str__(self):
         return self.book.title
+        #Will make adjustments once user login is available
         #+" sold by " + self.userSelling.username
 
 
