@@ -14,7 +14,7 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ["rating"]
+        fields = ['firstname', 'lastname', 'phone']
 
 """
 Form for selling a book that already exist in the
