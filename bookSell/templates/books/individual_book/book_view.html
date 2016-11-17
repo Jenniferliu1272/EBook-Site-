@@ -10,6 +10,7 @@
 	<br>
 	<p><img src="{{book.cover_image.url}}"></p>
 	<br>
+	{% if books_for_sale %}
 	<h3> Copies For Sale: </h3>
 
 	<table class="table">
@@ -21,5 +22,8 @@
 			{% include "books/individual_book/book_for_sale.html" %}
 		{% endfor %}
 	</table>
+	{% else %}
+		No copies for sale currently
+	{% endif %}
 </div>
 {% endblock %}
