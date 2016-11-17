@@ -30,7 +30,7 @@ def genre(request, genre):
     # TODO fix when rating
     top_books = Book.objects.filter(genre=genres.index(genre)).order_by('year_published')
     if(len(top_books) == 0):
-        return render(request,'books/browse_genre/genre_empty.html', {'genre': genre})
+        return render(request,'books/browse_genre/genre_empty.html', {'genre': genre, 'genres' : genres})
 
     new_books = Book.objects.filter(genre=genres.index(genre)).order_by('year_published')
     return render(request, 'books/browse_genre/genre.html', {'genre': genre, 'genres' : genres, 'books': top_books, 'top_book':top_books[0], 'new_book': new_books[0]})
