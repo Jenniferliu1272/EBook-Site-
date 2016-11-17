@@ -4,20 +4,26 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from .constants import genres
 
-# Create your models here.
+import os
+
+
+def get_image_path(instance, filename):
+    return os.path.join('photos', str(instance.id), filename)
+
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
     year_published = models.IntegerField()
     description = models.CharField(max_length=500)
-    rating = models.IntegerField()
+    cover_image = models.ImageField(upload_to='cover_photos', blank=True, null=True)
+
     genreChoices = []
     for index, genre in enumerate(genres):
         genreChoices.append((index, genre))
     genre = models.IntegerField(
-        max_length=1,
         choices=tuple(genreChoices)
     )
 
@@ -64,7 +70,6 @@ class BookForSale(models.Model):
         (3, 'New'),
     )
     condition = models.IntegerField(
-        max_length=1,
         choices=conditionChoices,
     )
 
@@ -81,7 +86,6 @@ class sellBookForm(models.Model):
     author = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     year_published = models.IntegerField()
-    rating = models.IntegerField()
     genreChoices = []
     for index, genre in enumerate(genres):
         genreChoices.append((index, genre))
@@ -96,7 +100,6 @@ class sellBookForm(models.Model):
         (3, 'New'),
     )
     condition = models.IntegerField(
-        max_length=1,
         default=3,
         choices=conditionChoices,
     )
@@ -107,7 +110,6 @@ class UserProfile(models.Model):
 	user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-	rating = models.CharField(max_length=30)
 	phone = models.CharField(max_length=30)
 	firstname = models.CharField(max_length=30)
 	lastname = models.CharField(max_length=30)
@@ -115,3 +117,22 @@ class UserProfile(models.Model):
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):
 		return self.user.username
+
+
+class BookRating(models.Model):
+    rating = models.IntegerField(
+        default=1,
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+     )
+    comment = models.CharField(max_length=200)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+class UserRating(models.Model):
+    rating = models.IntegerField(
+        default=1,
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+     )
+    comment = models.CharField(max_length=200)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    book = models.ForeignKey(BookForSale, on_delete=models.CASCADE)

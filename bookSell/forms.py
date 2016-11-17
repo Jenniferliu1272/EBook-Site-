@@ -45,16 +45,16 @@ class sell_form_existing(forms.ModelForm):
 class sell_form_original(forms.ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'author', 'description', 'year_published', 'rating', 'genre']
+        fields = ['title', 'author', 'description', 'year_published', 'genre', 'cover_image']
 
     def __init__(self, *args, **kwargs):
         super(sell_form_original, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update({'class': 'form-control'})
         self.fields['author'].widget.attrs.update({'class': 'form-control'})
         self.fields['year_published'].widget.attrs.update({'class': 'form-control'})
-        self.fields['rating'].widget.attrs.update({'class': 'form-control'})
         self.fields['genre'].widget.attrs.update({'class': 'form-control'})
         self.fields['description'].widget.attrs.update({'class': 'form-control'})
+        self.fields['cover_image'].widget.attrs.update({'class': 'form-control'})
 
     def save_sellFormOriginal(self, commit=True):
         new_book = super(sell_form_original, self).save(commit=False)
@@ -62,11 +62,11 @@ class sell_form_original(forms.ModelForm):
         new_book.author = self.cleaned_data['author']
         new_book.description = self.cleaned_data['description']
         new_book.year_published = self.cleaned_data['year_published']
-        new_book.rating = self.cleaned_data['rating']
         new_book.genre = self.cleaned_data['genre']
+        new_book.cover_image = self.cleaned_data['cover_image']
 
         new_book = Book(title=new_book.title, author=new_book.author, description=new_book.description,
-                        year_published=new_book.year_published, rating=new_book.rating, genre=new_book.genre)
+                        year_published=new_book.year_published, genre=new_book.genre, cover_image=new_book.cover_image)
         new_book.save()
 
         if commit:
