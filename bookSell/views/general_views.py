@@ -27,10 +27,13 @@ def search(request):
     return render(request, 'books/search/search_results.html', {'query':query, 'books':results, 'genres' : genres})
 
 def genre(request, genre):
-    books = Book.objects.filter(genre=genres.index(genre)).order_by('rating')
-    top_book = books[0]
-    new_book = Book.objects.filter(genre=genres.index(genre)).order_by('year_published')[0]
-    return render(request, 'books/browse_genre/genre.html', {'genre': genre, 'genres' : genres, 'books': books, 'top_book':top_book, 'new_book': new_book})
+    # TODO fix when rating
+    top_books = Book.objects.filter(genre=genres.index(genre)).order_by('year_published')
+    if(len(top_books) == 0):
+        return render(request,'books/browse_genre/genre_empty.html', {'genre': genre})
+
+    new_books = Book.objects.filter(genre=genres.index(genre)).order_by('year_published')
+    return render(request, 'books/browse_genre/genre.html', {'genre': genre, 'genres' : genres, 'books': top_books, 'top_book':top_books[0], 'new_book': new_books[0]})
 
 def condition_view(request):
     canView = True
