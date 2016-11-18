@@ -6,6 +6,7 @@ from bookSell.forms import *
 from django.db.models import Q
 from bookSell.constants import genres
 from django.template.defaulttags import csrf_token
+from django.contrib import messages
 
 # page sorting on bookPage
 headers = {'cost':'asc',
@@ -59,10 +60,12 @@ def book_rating(request, book_id):
         form = BookRatingForm(rating)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Review submission successful')
             return HttpResponseRedirect('/book/%s/' % book_id)                                     
 
         # to fix
         else:
+            messages.success(request, 'Review submission unsuccessful')
             return render(request, 'books/book_rating.html',{'book_rating': rating_form, 'book' : book})                                                                        
     else:
         rating_form = BookRatingForm()
