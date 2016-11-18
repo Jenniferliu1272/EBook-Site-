@@ -42,6 +42,8 @@
 	{% else %}
 		No ratings of this book yet
 	{% endif %}
-	<a href = "{% url 'book_rating' book.id %}"> Add a review </a>
+	{% if has_not_reviewed %}
+		<a href = "{% url 'book_rating' book.id %}"> Add a review </a>
+	{% endif %}
 </div>
 {% endblock %}
