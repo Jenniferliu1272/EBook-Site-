@@ -8,16 +8,18 @@
 	</div>
 	<p> {{book.description}} </p>
 	<br>
-	<p><img src="{{book.cover_image.url}}"></p>
+	{% if book.cover_image %}
+		<p><img src="{{book.cover_image.url}}"></p>
+	{% endif %}
 	<br>
 	{% if books_for_sale %}
 	<h3> Copies For Sale: </h3>
 
 	<table class="table">
-		<th><a href="?sort=condition"> Condition </a></th>
+		<th><a href="?sortBook=condition"> Condition </a></th>
 
-		<th><a href="?sort=cost"> Cost </a></th>
-		<th><a href="?sort=userSelling"> Sold By </a></th>
+		<th><a href="?sortBook=cost"> Cost </a></th>
+		<th><a href="?sortBook=userSelling"> Sold By </a></th>
 		{% for book in books_for_sale %}
 			{% include "books/individual_book/book_for_sale.html" %}
 		{% endfor %}
@@ -25,5 +27,21 @@
 	{% else %}
 		No copies for sale currently
 	{% endif %}
+
+	<h3> Ratings <small> Overall Rating of {{book.average_rating}} </small></h3> 
+	{% if ratings %}
+		<table class="table">
+			<th><a href="?sortRating=rating"> Rating </a></th>
+
+			<th><a href="?sortRating=comment"> Comment </a></th>
+			{% for rating in ratings %}
+				{% include "books/individual_book/ratings.html" %}
+			{% endfor %}
+		</table>
+
+	{% else %}
+		No ratings of this book yet
+	{% endif %}
+	<a href = "{% url 'book_rating' book.id %}"> Add a review </a>
 </div>
 {% endblock %}

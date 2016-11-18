@@ -32,8 +32,14 @@ class Book(models.Model):
 
     def _get_books_for_sale_count(self):
         return len(BookForSale.objects.filter(book=self.id))
-    books_for_sale_count = property(_get_books_for_sale_count)
 
+    def _average_rating(self):
+        ratings = BookRating.objects.filter(book=self.id)
+        return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
+
+
+    books_for_sale_count = property(_get_books_for_sale_count)
+    average_rating = property(_average_rating)
     def get_genre(self):
         if self.genre == 0:
             return "Science Fiction"
@@ -124,15 +130,22 @@ class BookRating(models.Model):
         default=1,
         validators=[MaxValueValidator(5), MinValueValidator(1)]
      )
-    comment = models.CharField(max_length=200)
+    comment = models.CharField(max_length=500)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    def __unicode__(self):
+        return self.book.title + " " + self.user.firstname
+
 
 class UserRating(models.Model):
     rating = models.IntegerField(
         default=1,
         validators=[MaxValueValidator(5), MinValueValidator(1)]
      )
-    comment = models.CharField(max_length=200)
+    comment = models.CharField(max_length=500)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     book = models.ForeignKey(BookForSale, on_delete=models.CASCADE)
+    def __unicode__(self):
+        return self.book.title + " " + self.user.firstname
+
+
