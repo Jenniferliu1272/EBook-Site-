@@ -55,7 +55,10 @@ def purchase_history(request):
 	if(len(books_bought) == 0):
 		return render(request,'books/purchase_history/purchase_empty.html')
 	else:
-		return render(request,'books/purchase_history/purchase.html', {'books':books_bought})
+		books = Book.objects.filter(title = books_bought[0].book.title)
+		for b in books_bought[1:]:
+			books = books | Book.objects.filter(title = b.book.title)
+		return render(request,'books/purchase_history/purchase.html', {'books':books})
 
 
 def book_rating(request, book_id):
