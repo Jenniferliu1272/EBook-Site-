@@ -1,0 +1,217 @@
+*{
+    margin:0;
+}
+
+/*.logo{
+    width:250px;
+    height:200px;
+}*/
+
+p{
+ float: left;
+}
+
+.pbtn{
+    line-height: 35px;
+    border: none;
+    background: transparent;
+}
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+.personal{
+    margin-bottom: -10px;
+}
+
+.personal > .dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+}
+
+.personal > .dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.personal > .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.personal > .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+.personal > .navbar .sub-menu:before {
+    border-bottom: 7px solid transparent;
+    border-left: none;
+    border-right: 7px solid rgba(0, 0, 0, 0.2);
+    border-top: 7px solid transparent;
+    left: -7px;
+    top: 10px;
+}
+.personal > .navbar .sub-menu:after {
+    border-top: 6px solid transparent;
+    border-left: none;
+    border-right: 6px solid #fff;
+    border-bottom: 6px solid transparent;
+    left: 10px;
+    top: 11px;
+    left: -6px;
+}
+
+footer ul{
+    list-style-type:none;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 200px;
+
+}
+
+footer {
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 200px;
+  background-color: #f5f5f5;
+}
+
+.footer-row{
+    margin-top:30px;
+}
+
+.footer-col{
+    margin-left:15%;
+}
+
+.to_float{
+    float:left;
+}
+
+#logo_text {
+   font-style: bold;
+   font-weight:300;
+   font-size:5vh;
+   color: white;
+   background-color:#A6A48A;
+   margin-top:0px;
+   padding-left:20px;
+   padding:4px;
+}
+
+.pag-form{
+    background:transparent;
+    border:none;
+}
+
+.header{
+    height:150px;
+    width:100%;
+    background-color:#A6A48A;
+}
+
+.container-fluid{
+    background-color:#6B3200;
+    padding-left: 10px;
+    margin-top:-10px;
+}
+
+.nav > li > a, .navbar-default .navbar-nav>li>a {
+    color:white;
+    margin-right:5px;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+    color:#D3D3D3;
+}
+
+
+/* Hover effects */
+.nav>li>a:hover
+{
+    background-color:#142126;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Used for overlay effect */
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 2s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.form-width{
+    width:60%;
+    padding-top:5px;
+    margin: 0 auto;
+}
+
+.input-group-btn:last-child>.btn{
+    height: 34px;
+    background: #142126;
+    color:white;
+}
+
+.navbar-default .navbar-nav>li>a:focus{
+    color:white;
+}
+
+.space{
+    margin-top: 10px;
+}
+
+

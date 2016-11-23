@@ -1,35 +1,52 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bookSell/style.scss' %}" />
+<script src="{% static 'bookSell/script.js' %}"></script>
+<!-- Include meta tag to ensure proper rendering and touch zooming -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<div class="container">
+    <div class="nav navbar">
+        <form method="get" action="/results/" class="form-width">
+        <div class="input-group search_option btn-group dropdown">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{genre}} <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              {% for genre in genres %}
+                  <li><a href="{% url 'genre' genre %}">{{genre}}</a></li>
+              {% endfor %}
+            </ul>
+          </span>
+          <input type="text" id="searchBox" class="underneath form-control" name="q" placeholder="Search for...">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default" aria-label="Left Align">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+                <!--<input class="btn btn-default" type="submit" value="Search">-->
+            </span>
+        </div>
+        </form>
+    </div>
+</div>
+
 <div class="nav navbar-default">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
             <!-- when register is complete, welcome will display the user it is using  {{ request.user }}-->
-            <li> <a href="{% url 'index' %}"> Welcome! </a> </li>
-			{% if user.is_authenticated %}
-			<li><a href="{% url 'logout'%}">Logout</a></li>
-			{% else %}
-			<li><a href="{% url 'register'%}">Sign up</a></li>
-			<li><a href="{% url 'login'%}">Login</a></li>
-			{% endif %}
-            <form method="get" action="/results/" class="navbar-form navbar-left">
-                <div class="input-group search_option">
-                  <input type="text" id="searchBox" class="form-control" name="q" placeholder="Search for...">
-                    <span class="input-group-btn">
-                    <input class="btn btn-default" type="submit" value="Search">
-                  </span>
-                </div><!-- /input-group -->
-            </form>
-        </ul>
-        <!-- right side -->
-          <!-- Direct to EcoBook Logging Page -->
-          <ul class="personal nav nav-pills navbar-right">
-       
-            <li class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Browse By Genre <b class="caret"></b></a>
-              <ul class="dropdown-menu" id="menu1">
-                {% for genre in genres %}
-                  <li><a href="{% url 'genre' genre %}">{{genre}}</a></li>
-                {% endfor %}
-              </ul>
+            <li> <a href="{% url 'index' %}"> Welcome
+                 {% if request.user.is_authenticated %}
+                     {{ request.user.username}}
+                 {% endif %} !</a>
             </li>
+			{% if user.is_authenticated %}
+			    <li><a href="{% url 'logout'%}">Logout</a></li>
+			{% else %}
+			    <li><a href="{% url 'register'%}">Sign up</a></li>
+			    <li><a class="on_click" href="#login">Login</a></li>
+			{% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'sell' %}">Sell</a></li>
             <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">My Eco Scrapbook <b class="caret"></b></a>
@@ -40,6 +57,26 @@
                 <li><a href="#">Purchase History</a></li>
               </ul>
             </li>
-          </ul>
+         </ul>
     </div>
+
+    <!-- Sign in form -->
+    <div id="login" class="overlay">
+        <div class="popup">
+            <h2>Login</h2>
+            <a class="close" href="">&times;</a>
+            <div class="content">
+                <form id="login_form" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    Username: <input type="text" name="username" class="form-control"/>
+                    <br />
+                    Password: <input type="password" name="password" class="form-control" />
+                    <br />
+                    <input type="submit" class="btn btn-default" value="submit" />
+			    </form>
+            </div>
+        </div>
+    </div>
+    <!-- end of sign in form -->
 </div>
+

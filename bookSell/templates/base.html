@@ -4,27 +4,19 @@
 {% bootstrap_css %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'bookSell/style.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'bookSell/stylesheet.css' %}" />
-
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <title>{% block title %} Book Sell{% endblock %}</title>
-    <!--<style type="text/css">
-    </style>-->
 </head>
 
 <body>
     <!-- navigation bar here -->
-    <div class="header">
+    <h1 id="logo_text">EcoBooks</h1>
+    <!--<div class="header">
         <img class="logo img-responsive center-block" src="{% static 'bookSell/images/logo.png' %}" alt="My image"/>
-        <h1 id="logo_text"> EcoBooks </h1>
-
-    </div>
+        <h1 id="logo_text">EcoBooks</h1>
+    </div>-->
 
   <!-- navigation bar here -->
   {% include "navbar.html" %}
@@ -38,4 +30,3 @@
   {% include "footer.html" %}
 
 </body>
-</html>
