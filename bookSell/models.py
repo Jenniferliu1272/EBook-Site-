@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -81,34 +82,8 @@ class BookForSale(models.Model):
 
     def __str__(self):
         return self.book.title
+        #+ " sold by " + self.userSelling.username
         #Will make adjustments once user login is available
-        #+" sold by " + self.userSelling.username
-
-
-
-
-class sellBookForm(models.Model):
-    title = models.CharField(max_length=200)
-    author = models.CharField(max_length=200)
-    description = models.CharField(max_length=500)
-    year_published = models.IntegerField()
-    genreChoices = []
-    for index, genre in enumerate(genres):
-        genreChoices.append((index, genre))
-    genre = models.IntegerField(
-        choices=tuple(genreChoices)
-    )
-    cost = models.IntegerField()
-    conditionChoices = (
-        (0, 'Poor'),
-        (1, 'Fair'),
-        (2, 'Good'),
-        (3, 'New'),
-    )
-    condition = models.IntegerField(
-        default=3,
-        choices=conditionChoices,
-    )
 
 
 class UserProfile(models.Model):
@@ -123,6 +98,34 @@ class UserProfile(models.Model):
 	# Override the __unicode__() method to return out something meaningful!
 	def __unicode__(self):
 		return self.user.username
+
+class Payment(models.Model):
+    user = models.OneToOneField(User, null=True, related_name="user")
+    credit_card = models.CharField(max_length=150)
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    cvv = models.CharField(max_length=3)
+
+    #Expiration Date
+    year_dropdown = []
+    for y in range(2016, (datetime.datetime.now().year + 5)):
+        year_dropdown.append((y, y))
+    month = models.IntegerField(('year'), max_length=4, choices=year_dropdown, default=datetime.datetime.now().year)
+    day_dropdown = []
+    for d in range(0, (datetime.datetime.now().day + 30)):
+        day_dropdown.append((d, d))
+    day = models.IntegerField(('day'), max_length=2, choices=day_dropdown, default=datetime.datetime.now().day)
+
+
+
+
+
+    #Billing Information
+    street_address = models.CharField(max_length=150)
+    city = models.CharField(max_length=30)
+    state = models.CharField(max_length=10)
+    postal = models.CharField(max_length=5)
+    country = models.CharField(max_length=10)
 
 
 class BookRating(models.Model):
