@@ -46,6 +46,7 @@
 			    <li><a class="on_click" href="#login">Login</a></li>
 			{% endif %}
         </ul>
+		{% if user.is_authenticated %}
         <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'sell' %}">Sell</a></li>
             <li class="dropdown">
@@ -58,6 +59,7 @@
               </ul>
             </li>
          </ul>
+		 {% endif %}
     </div>
 
     <!-- Sign in form -->
