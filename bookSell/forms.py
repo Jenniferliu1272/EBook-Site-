@@ -11,10 +11,22 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
 
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'class': 'form-control'})
+        self.fields['email'].widget.attrs.update({'class': 'form-control'})
+        self.fields['password'].widget.attrs.update({'class': 'form-control'})
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['firstname', 'lastname', 'phone']
+
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+        self.fields['firstname'].widget.attrs.update({'class': 'form-control'})
+        self.fields['lastname'].widget.attrs.update({'class': 'form-control'})
+        self.fields['phone'].widget.attrs.update({'class': 'form-control'})
 
 class BookRatingForm(forms.ModelForm):
     class Meta:
@@ -38,8 +50,9 @@ class sell_form_existing(forms.ModelForm):
         self.fields['cost'].widget.attrs.update({'class': 'form-control'})
         self.fields['condition'].widget.attrs.update({'class': 'form-control'})
 
-    def save_sellFormExisiting(self, book_id, commit=True):
+    def save_sellFormExisiting(self, book_id, user, commit=True):
         current_book = super(sell_form_existing, self).save(commit=False)
+        current_book.userSelling = user
         current_book.book = Book.objects.get(id=book_id)
         current_book.condition = self.cleaned_data['condition']
         current_book.cost = self.cleaned_data['cost']
@@ -79,74 +92,32 @@ class sell_form_original(forms.ModelForm):
             new_book.save()
         return new_book
 
+"Forms for buying a book"
 
-
-
-
-
-
-
-
-
-
-
-"""class sell_book_form_p1(forms.ModelForm):
+class buy_form(forms.ModelForm):
     class Meta:
-        model = Book
-        #exclude = ('title','author','description','year_published')
-        fields = ['title', 'author', 'description', 'year_published', 'rating', 'genre']
+        model = Payment
+        fields = ['credit_card', 'first_name','last_name','cvv','street_address','city','state','postal', 'country', 'month', 'day']
+        exclude = ['user']
 
     def __init__(self, *args, **kwargs):
-        super(sell_book_form_p1, self).__init__(*args, **kwargs)
-        self.fields['title'].widget.attrs.update({'class': 'form-control'})
-        self.fields['author'].widget.attrs.update({'class': 'form-control'})
-        self.fields['description'].widget.attrs.update({'class': 'form-control'})
-        self.fields['year_published'].widget.attrs.update({'class': 'form-control'})
-        self.fields['rating'].widget.attrs.update({'class': 'form-control'})
-        self.fields['genre'].widget.attrs.update({'class': 'form-control'})
+        super(buy_form, self).__init__(*args, **kwargs)
+        self.fields['credit_card'].widget.attrs.update({'class': 'form-control'})
+        self.fields['first_name'].widget.attrs.update({'class': 'form-control'})
+        self.fields['last_name'].widget.attrs.update({'class': 'form-control'})
+        self.fields['cvv'].widget.attrs.update({'class': 'form-control'})
+        self.fields['street_address'].widget.attrs.update({'class': 'form-control'})
+        self.fields['city'].widget.attrs.update({'class': 'form-control'})
+        self.fields['state'].widget.attrs.update({'class': 'form-control'})
+        self.fields['postal'].widget.attrs.update({'class': 'form-control'})
+        self.fields['country'].widget.attrs.update({'class': 'form-control'})
+        self.fields['month'].widget.attrs.update({'class': 'dropdown'})
+        self.fields['day'].widget.attrs.update({'class': 'dropdown'})
 
-    def save_sell_form_p1(self):
-        title = self.cleaned_data['title']
-        author = self.cleaned_data['author']
-        description = self.cleaned_data['description']
-        year_published = self.cleaned_data['year_published']
-        cost = self.cleaned_data['cost']
-        condition = self.cleaned_data['condition']
+    def save_buyForm(self, user_buying, commit=True):
+        new = super(buy_form, self).save(commit=False)
+        new.user = user_buying
 
-        new_book = Book(title=title, author=author, description=description,
-                        year_published=year_published, rating=2, genre=0)
-        new_book.save()
-
-        return new_book
-
-
-class sell_book_form_p2(forms.ModelForm):
-    class Meta:
-        model = sellBookForm
-        exclude = ('title','author','description','year_published',)
-        fields = ['rating', 'genre', 'cost', 'condition']
-
-    def __init__(self, *args, **kwargs):
-        super(sell_book_form_p2, self).__init__(*args, **kwargs)
-        self.fields['rating'].widget.attrs.update({'class': 'form-control'})
-        self.fields['genre'].widget.attrs.update({'class': 'form-control'})
-        self.fields['cost'].widget.attrs.update({'class': 'form-control'})
-        self.fields['condition'].widget.attrs.update({'class': 'form-control'})
-
-    def save_sell_form_p2(self, book_id):
-        rating = self.cleaned_data['rating']
-        genre = self.cleaned_data['genre']
-        cost = self.cleaned_data['cost']
-        condition = self.cleaned_data['condition']
-
-        current_book = Book.objects.get(id=book_id)
-        current_book.rating = rating
-        current_book.genre = genre
-        current_book.condition = condition
-        current_book.cost = cost
-        current_book.save()
-
-        return current_book
-"""
-
-
+        if commit:
+            new.save()
+        return new
