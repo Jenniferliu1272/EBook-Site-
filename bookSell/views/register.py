@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.conf.urls import include, url
 from django.shortcuts import render,get_object_or_404,render_to_response,redirect
 from django.views.decorators.csrf import csrf_exempt
+from bookSell.constants import genres
 
 @csrf_exempt
 def register(request):
@@ -60,4 +61,4 @@ def register(request):
 		profile_form = UserProfileForm()
 
     # Render the template depending on the context.
-	return render_to_response('register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered},RequestContext(request))
+	return render_to_response('register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered, 'genres': genres, 'genre': genres[0]},RequestContext(request))

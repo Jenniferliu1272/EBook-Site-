@@ -6,13 +6,9 @@ from bookSell.forms import *
 from django.db.models import Q
 from bookSell.constants import genres, conditions
 
-def condition_view(request):
-    canView = True
-    return render(request, 'books/individual_book/book_view.html', )
-
 def sell_view(request):
 
-    return render(request, 'books/sellBuyForm/searchExisting.html', {'genres': genres, 'genre': genres[0] })
+    return render(request, 'books/sellBuyForm/searchExisting.html', {'genres': genres, 'genre': genres[0]})
 
 def sell_search(request):
     try:

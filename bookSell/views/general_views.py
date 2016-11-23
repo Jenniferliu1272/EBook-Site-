@@ -16,7 +16,7 @@ def book(request, book_id):
     sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
     book = get_object_or_404(Book, pk=book_id)
     books_for_sale = BookForSale.objects.filter(book=book_id).order_by(sort)
-    has_not_reviewed = not any(b['user'] == request.user.id for b in books_for_sale)
+    #has_not_reviewed = not any(b['user'] == request.user.id for b in books_for_sale)
     ratings = BookRating.objects.filter(book=book_id)
     if headers[sort] == "des":
         books_for_sale = books_for_sale.reverse()
@@ -25,10 +25,11 @@ def book(request, book_id):
         headers[sort] = "des"
     return render(request, 'books/individual_book/book_view.html', {
         'book': book,
-        'books_for_sale': books_for_sale, 
+        'books_for_sale': books_for_sale,
+        'len': len(books_for_sale),
         'genres' : genres, 
         'ratings':ratings,
-        'has_not_reviewed' : has_not_reviewed
+        #'has_not_reviewed' : has_not_reviewed
         })
 
 def search(request):
