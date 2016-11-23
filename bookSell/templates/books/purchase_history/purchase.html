@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-md-8 col-md-offset-2">
+
+    <div class="page-header">
+      <h1>{{genre}}</h1>
+    </div>
+
+
+    <div class = "row">
+        <div class="col-md-5">
+            {% include "books/homepage/book_list.html" with books=books title="Purchased Books" %}
+        </div>
+</div>
+{% endblock %}
+</div>

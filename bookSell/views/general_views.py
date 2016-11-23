@@ -49,6 +49,13 @@ def genre(request, genre):
 def condition_view(request):
     canView = True
     return render(request, 'books/individual_book/book_view.html', )
+	
+def purchase_history(request):
+	books_bought = BookForSale.objects.filter(userBought=request.user)
+	if(len(books_bought) == 0):
+		return render(request,'books/purchase_history/purchase_empty.html')
+	else:
+		return render(request,'books/purchase_history/purchase.html', {'books':books_bought})
 
 
 def book_rating(request, book_id):
