@@ -1,0 +1,21 @@
+<h3> Books Sold</h3>
+
+{% if books %}
+    <ul class="list-group">
+    {% for book in books %}
+        <li class="list-group-item">
+            <a href="{% url 'book' book.id %}">{{ book.book.title }}</a> by {{book.book.author}} for ${{book.cost}} to {{book.userBought}}
+            {% if book.rating %}
+                <br>
+                Rated at {{book.rating.rating}}/5 with comment: "{{book.rating.comment}}""
+            {% endif %}
+            {% if condition == True %}
+                <br/><br/>
+                <a class="option" href="{% url 'sell_existing' book.id %}">Sell one like this</a>
+            {% endif%}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>None</p>
+{% endif %}

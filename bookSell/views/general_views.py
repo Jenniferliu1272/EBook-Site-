@@ -59,6 +59,22 @@ def purchase_history(request):
     else:
         return render(request,'books/purchase_history/purchase.html', {'books':books_bought})
 
+def selling(request):
+    books_sold = BookForSale.objects.filter(userBought=request.user, sold=True)
+    books_for_sale = BookForSale.objects.filter(userBought=request.user, sold=False)
+    profit = sum(b.cost for b in books_sold)
+    ratings = UserRating.objects.filter(book__userSelling=1)
+    rating = sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
+
+    total_earnings = sum(b.cost for b in books_for_sale) + profit
+
+    return render(request,'books/selling/selling.html', {
+        'books_sold':books_sold,
+        'books_for_sale': books_for_sale,
+        'profit' : profit,
+        'total_earnings' : total_earnings,
+        'rating' : rating   
+        })
 
 def book_rating(request, book_id):
     book = Book.objects.filter(id=book_id)[0]

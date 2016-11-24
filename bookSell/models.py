@@ -125,13 +125,13 @@ class Payment(models.Model):
     year_dropdown = []
     for y in range(2016, (datetime.datetime.now().year + 5)):
         year_dropdown.append((y, y))
-    year = models.IntegerField(max_length=4, choices=year_dropdown, default=datetime.datetime.now().year)
+    year = models.IntegerField(choices=year_dropdown, default=datetime.datetime.now().year)
 
     month_dropdown = []
     month_name = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
     for d in range(0, 12):
         month_dropdown.append((d, month_name[d]))
-    month = models.IntegerField(max_length=2, choices=month_dropdown, default=datetime.datetime.now().month)
+    month = models.IntegerField(choices=month_dropdown, default=datetime.datetime.now().month)
 
     #Billing Information
     street_address = models.CharField(max_length=150, default='', null=False)
