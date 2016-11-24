@@ -14,12 +14,13 @@ headers = {'cost':'asc',
          'condition':'asc',
          'userSelling':'asc',
          'userRating':'asc'}
+
 def book(request, book_id):
     sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
     book = get_object_or_404(Book, pk=book_id)
     books_for_sale = BookForSale.objects.filter(book=book_id).order_by(sort)
-    #has_not_reviewed = not any(b['user'] == request.user.id for b in books_for_sale)
     ratings = BookRating.objects.filter(book=book_id)
+    has_not_reviewed = not any(b.user.user.id == request.user.id for b in ratings)
     if headers[sort] == "des":
         books_for_sale = books_for_sale.reverse()
         headers[sort] = "asc"
@@ -31,7 +32,7 @@ def book(request, book_id):
         'len': len(books_for_sale),
         'genres' : genres, 
         'ratings':ratings,
-        #'has_not_reviewed' : has_not_reviewed
+        'has_not_reviewed' : has_not_reviewed
         })
 
 def search(request):
@@ -80,7 +81,7 @@ def book_rating(request, book_id):
     book = Book.objects.filter(id=book_id)[0]
     if request.method == 'POST':
         rating = request.POST.copy()
-        rating['user'] = request.user.id
+        rating['user'] = UserProfile.objects.filter(user=request.user.id).first().id
         rating['book'] = book.id
         form = BookRatingForm(rating)
         if form.is_valid():
@@ -91,7 +92,7 @@ def book_rating(request, book_id):
         # to fix
         else:
             messages.error(request, 'Review submission unsuccessful')
-            return render(request, 'books/book_rating.html',{'book_rating': rating_form, 'book' : book})                                                                        
+            return render(request, 'books/book_rating.html',{'book_rating': BookRatingForm(), 'book' : book})                                                                        
     else:
         rating_form = BookRatingForm()
 
