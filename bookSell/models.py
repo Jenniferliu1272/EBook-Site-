@@ -100,24 +100,21 @@ class UserProfile(models.Model):
 		return self.user.username
 
 class Payment(models.Model):
-    user = models.OneToOneField(User, null=True, related_name="user")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     credit_card = models.CharField(max_length=150)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     cvv = models.CharField(max_length=3)
-
+    book = models.ForeignKey(BookForSale, on_delete=models.CASCADE)
     #Expiration Date
     year_dropdown = []
     for y in range(2016, (datetime.datetime.now().year + 5)):
         year_dropdown.append((y, y))
-    month = models.IntegerField(('year'), max_length=4, choices=year_dropdown, default=datetime.datetime.now().year)
+    month = models.IntegerField(('year'), choices=year_dropdown, default=datetime.datetime.now().year)
     day_dropdown = []
     for d in range(0, (datetime.datetime.now().day + 30)):
         day_dropdown.append((d, d))
-    day = models.IntegerField(('day'), max_length=2, choices=day_dropdown, default=datetime.datetime.now().day)
-
-
-
+    day = models.IntegerField(('day'), choices=day_dropdown, default=datetime.datetime.now().day)
 
 
     #Billing Information

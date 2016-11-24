@@ -1,8 +1,11 @@
+{% if book.sold %}
 
+{% else %}
 	<tr>
 		<td> {{book.get_condition_display}} </td>
 		<td> {{book.cost}} </td>
 		<td> {{book.userSelling.username}} </td>
 		<td> <a href="{% url 'buy_book' book.id %}"> Buy </a> </td>
 	</tr>
+{% endif %}
 

@@ -29,7 +29,6 @@ urlpatterns = [
 	url(r'^login/', django.contrib.auth.views.login, name='login'),
 	url(r'^logout/', django.contrib.auth.views.logout, name='logout'),
 	url(r'^results/$', views.search, name='search'),
-	url(r'^sell/$', views.sell_view, name='sell'),
 	url(r'^genre/(?P<genre>.*)/$', views.genre, name='genre'),
     url(r'^book_rating/(?P<book_id>[0-9]+)/$', views.book_rating, name='book_rating'),
 	url(r'^purchase_history', views.purchase_history, name='purchase_history'),

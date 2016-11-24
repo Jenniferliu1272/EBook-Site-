@@ -64,7 +64,6 @@ def purchase_history(request):
 def book_rating(request, book_id):
     book = Book.objects.filter(id=book_id)[0]
     if request.method == 'POST':
-        rating_form = BookRatingForm(data=request.POST)
         rating = request.POST.copy()
         rating['user'] = request.user.id
         rating['book'] = book.id
@@ -76,7 +75,7 @@ def book_rating(request, book_id):
 
         # to fix
         else:
-            messages.success(request, 'Review submission unsuccessful')
+            messages.error(request, 'Review submission unsuccessful')
             return render(request, 'books/book_rating.html',{'book_rating': rating_form, 'book' : book})                                                                        
     else:
         rating_form = BookRatingForm()

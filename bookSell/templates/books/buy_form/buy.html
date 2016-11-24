@@ -11,7 +11,7 @@
         <form class="margin" action="" method="POST">
             {% csrf_token %}
             <div class="panel panel-default">
-              <div class="panel-heading">Currently Purchasing {{ book }} </div>
+              <div class="panel-heading">Currently Purchasing {{ book }} for ${{book_for_sale.cost}} </div>
             </div>
              <!--<div class="panel panel-default">
               <div class="panel-heading">Credit Card Information</div>

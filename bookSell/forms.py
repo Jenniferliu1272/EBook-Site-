@@ -97,8 +97,7 @@ class sell_form_original(forms.ModelForm):
 class buy_form(forms.ModelForm):
     class Meta:
         model = Payment
-        fields = ['credit_card', 'first_name','last_name','cvv','street_address','city','state','postal', 'country', 'month', 'day']
-        exclude = ['user']
+        fields = ('credit_card', 'first_name','last_name','cvv','street_address','city','state','postal', 'country', 'month', 'day')
 
     def __init__(self, *args, **kwargs):
         super(buy_form, self).__init__(*args, **kwargs)
@@ -114,10 +113,3 @@ class buy_form(forms.ModelForm):
         self.fields['month'].widget.attrs.update({'class': 'dropdown'})
         self.fields['day'].widget.attrs.update({'class': 'dropdown'})
 
-    def save_buyForm(self, user_buying, commit=True):
-        new = super(buy_form, self).save(commit=False)
-        new.user = user_buying
-
-        if commit:
-            new.save()
-        return new
