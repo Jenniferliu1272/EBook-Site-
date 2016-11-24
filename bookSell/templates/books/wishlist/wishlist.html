@@ -3,12 +3,24 @@
 {% block content %}
 <div class="col-md-8 col-md-offset-2">
 	<h1> My Book Collection </h1>
-	{% if books %}
+	{% if wishlist %}
 		<ul class="list-group">
-		{% for book in books %}
+		{% for list in wishlist %}
 			<li class="list-group-item">
-				<a href="{% url 'book' book.id %}">{{ book.title }}</a> by {{book.author}}
-				<span class="badge">{{book.books_for_sale_count}} for sale</span>
+				<a href="{% url 'book' list.book.id %}">{{ list.book.title }}</a> by {{list.book.author}}
+				for less than ${{list.costLessThan}} and in better than {{list.get_betterConditionThan_display}} condition
+				<table class="table">
+					<th><a href="?sortBook=condition"> Condition </a></th>
+
+					<th><a href="?sortBook=cost"> Cost </a></th>
+					<th><a href="?sortBook=userSelling"> Sold By </a></th>
+					<th> <a href="?sortBook=userRating">User Rating </a></th>
+					<th></th>
+					{% for book in books_for_sale %}
+						{% include "books/individual_book/book_for_sale.html" %}
+					{% endfor %}
+				</table>
+				<span class="badge">{{list.book.books_for_sale_count}} for sale</span>
 				<form method="post" class="form-inline">
 					 {% csrf_token %}
 					<input type="submit" value="x" name="{{book.id}}"class="btn btn-danger">

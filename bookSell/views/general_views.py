@@ -16,28 +16,26 @@ headers = {'cost':'asc',
          'userRating':'asc'}
 
 def book(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+
     # delete from wishlist
     if(request.GET.get('delfav')):
-        user = get_object_or_404(UserProfile, user__id=request.user.id)
-        user.wishlist.remove(params['x'])
-        user.save()
+        wishlist = get_object_or_404(Wishlist, user=request.user, book=book)
+        wishlist.delete()
 
 
     # add to wishlist
     if(request.GET.get('add_fav')):
-        user = get_object_or_404(UserProfile, user__id=request.user.id)
-        user.wishlist.add(book_id)
-        user.save()
+        Wishlist.objects.create(user=request.user, book=book, costLessThan=1, betterConditionThan=2 )
 
     sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
-    book = get_object_or_404(Book, pk=book_id)
     books_for_sale = BookForSale.objects.filter(book=book_id).order_by(sort)
 
     ratings = BookRating.objects.filter(book=book_id)
     has_not_reviewed = not any(b.user.user.id == request.user.id for b in ratings)
 
     # prepare text as needed to wishlist
-    inWishlist = len(UserProfile.objects.filter(user__id=request.user.id, wishlist__id=book_id)) > 0
+    inWishlist = len(Wishlist.objects.filter(user=request.user, book=book)) > 0
     wishlistText = "Add to wishlist" if not inWishlist else "Remove from wishlist"
     wishlistName = "add_fav" if not inWishlist else "del_fav"
 
@@ -86,11 +84,18 @@ def purchase_history(request):
 def wishlist(request):
     if request.method == "POST":
         params = {y:x for x,y in request.POST.iteritems()}
-        user = get_object_or_404(UserProfile, user__id=request.user.id)
-        user.wishlist.remove(params['x'])
-        user.save()
-    books = get_object_or_404(UserProfile, user__id=request.user.id).wishlist.all()
-    return render(request, 'books/wishlist/wishlist.html', {'books':books} )
+        book = get_object_or_404(Book, pk=params['x'])
+        wishlist = get_object_or_404(Wishlist, user=request.user, book=book)
+        wishlist.delete()
+    
+    wishlist = Wishlist.objects.filter(user=request.user)
+    books_for_sale = []
+    for i,w in enumerate(wishlist):
+        book = w.book
+        book_for_sale = BookForSale.objects.filter(book=book, cost__lte=w.costLessThan, condition__gte=w.betterConditionThan)
+        books_for_sale = books_for_sale  + list(book_for_sale)
+    print books_for_sale
+    return render(request, 'books/wishlist/wishlist.html', {'wishlist':wishlist, 'books_for_sale' :books_for_sale} )
 
 def selling(request):
     books_sold = BookForSale.objects.filter(userBought=request.user, sold=True)

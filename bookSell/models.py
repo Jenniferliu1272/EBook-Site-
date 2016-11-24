@@ -109,9 +109,6 @@ class UserProfile(models.Model):
         #return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
 
     average_rating = property(_average_rating)
-
-    wishlist = models.ManyToManyField(Book)
-
     # Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):
         return self.user.username
@@ -168,4 +165,18 @@ class UserRating(models.Model):
     def __unicode__(self):
         return self.book.book.title
 
-
+class Wishlist(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    costLessThan = models.IntegerField(validators=[MinValueValidator(0)])
+    conditionChoices = (
+        (0, 'Poor'),
+        (1, 'Fair'),
+        (2, 'Good'),
+        (3, 'New'),
+    )
+    betterConditionThan = models.IntegerField(
+        choices=conditionChoices,
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __unicode__(self):
+        return self.book.title + " " + self.user.username

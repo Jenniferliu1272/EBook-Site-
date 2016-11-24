@@ -10,6 +10,7 @@ admin.site.register(BookForSale)
 admin.site.register(UserProfile)
 admin.site.register(BookRating)
 admin.site.register(UserRating)
+admin.site.register(Wishlist)
 admin.site.register(Payment, PaymentAdmin)
 
 
