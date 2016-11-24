@@ -80,3 +80,26 @@ def book_rating(request, book_id):
 
     # Render the template depending on the context.
     return render(request, 'books/book_rating.html',{'book_rating': rating_form, 'book': book})
+
+
+
+def user_rating(request, book_for_sale):
+    book_for_sale = BookForSale.objects.get(id=book_for_sale)
+    if request.method == 'POST':
+        rating = request.POST.copy()
+        rating['book'] = book_for_sale.id
+        form = UserRatingForm(rating)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Review submission successful')
+            return HttpResponseRedirect("/purchase_history")                                     
+
+        # to fix
+        else:
+            messages.error(request, 'Review submission unsuccessful')
+            return render(request, 'books/user_rating.html',{'book_rating': rating_form, 'book' : book_for_sale})                                                                        
+    else:
+        rating_form = BookRatingForm()
+
+    # Render the template depending on the context.
+    return render(request, 'books/user_rating.html',{'book_rating': rating_form, 'book': book_for_sale})

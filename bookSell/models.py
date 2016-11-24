@@ -81,6 +81,10 @@ class BookForSale(models.Model):
         choices=conditionChoices,
     )
 
+    def _rating(self):
+        return UserRating.objects.get(book=self.id)
+
+    rating = property(_rating)    
     def __str__(self):
         return self.book.title
         #+ " sold by " + self.userSelling.username
@@ -89,16 +93,21 @@ class BookForSale(models.Model):
 
 class UserProfile(models.Model):
 	# This line is required. Links UserProfile to a User model instance.
-	user = models.OneToOneField(User)
+    user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-	phone = models.CharField(max_length=30)
-	firstname = models.CharField(max_length=30)
-	lastname = models.CharField(max_length=30)
-	
-	# Override the __unicode__() method to return out something meaningful!
-	def __unicode__(self):
-		return self.user.username
+    phone = models.CharField(max_length=30)
+    firstname = models.CharField(max_length=30)
+    lastname = models.CharField(max_length=30)
+    def _average_rating(self):
+        ratings = UserRating.objects.filter(BookForSale__UserSold=self.id)
+        return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
+
+    average_rating = property(_average_rating)
+
+    # Override the __unicode__() method to return out something meaningful!
+    def __unicode__(self):
+        return self.user.username
 
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -140,13 +149,12 @@ class BookRating(models.Model):
 
 class UserRating(models.Model):
     rating = models.IntegerField(
-        default=1,
         validators=[MaxValueValidator(5), MinValueValidator(1)]
      )
     comment = models.CharField(max_length=500)
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     book = models.ForeignKey(BookForSale, on_delete=models.CASCADE)
+
     def __unicode__(self):
-        return self.book.title + " " + self.user.firstname
+        return self.book.book.title + " " + self.book.userBought.firstname
 
 

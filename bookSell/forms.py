@@ -33,6 +33,11 @@ class BookRatingForm(forms.ModelForm):
         model = BookRating
         fields = ['comment', 'user', 'book', 'rating']
 
+class UserRatingForm(forms.ModelForm):
+    class Meta:
+        model = UserRating
+        fields = ['comment', 'book', 'rating']
+
 
 """
 Form for selling a book that already exist in the

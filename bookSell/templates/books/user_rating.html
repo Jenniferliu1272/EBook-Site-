@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<body>
+		<center>
+		<h2> Rate {{book.book.title}} from {{book.userSelling}}</h2>
+			<form id="user_rating" method="post" action="/user_rating/{{book.id}}/" enctype="multipart/form-data">
+				{% csrf_token %}
+				    <label for="comment">Comment </label>
+    				<input id="comment" type="text" name="comment" value="">
+    				<label for="rating"> Rating </label>
+    				<select id = "rating" name = "rating">
+	    				{% for i in "xxxxx" %}
+	    					<option value="{{forloop.counter}}">{{forloop.counter}}</option>
+	    				{% endfor %}
+    				</select>
+				<input type="submit" name="submit" value="Submit" />
+			</form>
+		</center>
+	</body>
+{% endblock %}
