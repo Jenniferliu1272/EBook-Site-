@@ -4,31 +4,56 @@
 {% block content %}
     <style>
         .margin{
-            margin: 10px;
+            margin: 20px;
+        }
+        .margin-top{
+            margin-top: 20px;
         }
     </style>
     <div class="col-md-8 col-md-offset-2">
         <form class="margin" action="" method="POST">
             {% csrf_token %}
             <div class="panel panel-default">
-              <div class="panel-heading">Currently Purchasing {{ book }} for ${{book_for_sale.cost}} </div>
+              <div class="panel-heading">Currently Purchasing {{ book }} for ${{ book.cost }} </div>
             </div>
-            <!--<div class="panel panel-default">
+            <!--{{ buy_form }}-->
+             <div class="panel panel-default">
               <div class="panel-heading">Credit Card Information</div>
               <div class="panel-body">
-                  Credit Card: {{ buy_form.credit_card }}
-                  <div class="row">
-
-                      
-                  </div>
-                  First Name: {{ buy_form.first_name }}
-                  Last Name: {{ buy_form.first_name }}
-                  CVV: {{ buy_form.first_name }}
+                Credit Card: {{ buy_form.credit_card }}
+                <div class="row">
+                    <div class="col-md-6">
+                        First name: {{ buy_form.first_name }}
+                    </div>
+                    <div class="col-md-6">
+                        Last name: {{ buy_form.last_name }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        CVV: {{ buy_form.cvv }}
+                    </div>
+                    <div class="col-md-6 margin-top">
+                        Expiration Date:
+                        {{ buy_form.year }}
+                        {{ buy_form.month }}
+                    </div>
               </div>
-             </div>-->
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">Billing Address Information</div>
+              <div class="panel-body">
+                Street Address: {{ buy_form.street_address }}
+                City: {{ buy_form.city }}
+                State: {{ buy_form.state }}
+                Postal: {{ buy_form.postal }}
+                Postal: {{ buy_form.country }}
+                Country: {{ buy_form.country }}
 
-            {{ buy_form }}
-            <input class="btn btn-default" type="submit" value="submit">
+              </div>
+              </div>
+            <input class="btn btn-default" type="submit" value="Confirm Purchase">
         </form>
     </div>
 

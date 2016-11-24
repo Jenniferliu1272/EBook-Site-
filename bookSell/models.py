@@ -111,10 +111,10 @@ class UserProfile(models.Model):
 
 class Payment(models.Model):
     user = models.OneToOneField(User, null=True, related_name="user")
-    credit_card = models.CharField(max_length=150, null=False, default='')
-    first_name = models.CharField(max_length=20, null=False, default='')
-    last_name = models.CharField(max_length=20, null=False, default='')
-    cvv = models.CharField(max_length=3, null=False, default='')
+    credit_card = models.CharField(max_length=150, null=False)
+    first_name = models.CharField(max_length=20, null=False)
+    last_name = models.CharField(max_length=20, null=False)
+    cvv = models.CharField(max_length=3, null=False)
 
     #Expiration Date
     year_dropdown = []
@@ -130,10 +130,10 @@ class Payment(models.Model):
 
     #Billing Information
     street_address = models.CharField(max_length=150, default='', null=False)
-    city = models.CharField(max_length=30, default='', null=False)
-    state = models.CharField(max_length=10, default='', null=False)
-    postal = models.CharField(max_length=5, default='', null=False)
-    country = models.CharField(max_length=10, default='', null=False)
+    city = models.CharField(max_length=30, null=False)
+    state = models.CharField(max_length=10, null=False)
+    postal = models.CharField(max_length=5, null=False)
+    country = models.CharField(max_length=10, null=False)
 
     def __unicode__(self):
        return self.user.first_name + " " + self.user.last_name
