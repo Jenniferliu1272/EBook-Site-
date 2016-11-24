@@ -5,6 +5,7 @@
 		<td> {{book.get_condition_display}} </td>
 		<td> {{book.cost}} </td>
 		<td> {{book.userSelling.username}} </td>
+        <td> {{book.seller_rating}} </td>
 		<td> <a href="{% url 'buy_book' book.id %}"> Buy </a> </td>
 	</tr>
 {% endif %}

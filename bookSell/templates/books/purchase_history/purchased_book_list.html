@@ -4,6 +4,12 @@
 	{% for book in books %}
 		<li class="list-group-item">
 			<a href="{% url 'book' book.id %}">{{ book.book.title }}</a> by {{book.book.author}} by {{book.userSelling}} for ${{book.cost}}
+			{% if book.rating %}
+				rated at {{book.rating.rating}}/5
+			{% else %}
+
+				<a href="{% url 'user_rating' book.id %}"> Rate user selling book </a>
+			{% endif %}
 			{% if condition == True %}
 				<br/><br/>
 				<a class="option" href="{% url 'sell_existing' book.id %}">Sell one like this</a>
