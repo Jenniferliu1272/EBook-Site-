@@ -117,29 +117,33 @@ class UserProfile(models.Model):
         return self.user.username
 
 class Payment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    credit_card = models.CharField(max_length=150)
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    cvv = models.CharField(max_length=3)
-    book = models.ForeignKey(BookForSale, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, related_name="user")
+    credit_card = models.CharField(max_length=150, null=False, default='')
+    first_name = models.CharField(max_length=20, null=False, default='')
+    last_name = models.CharField(max_length=20, null=False, default='')
+    cvv = models.CharField(max_length=3, null=False, default='')
+
     #Expiration Date
     year_dropdown = []
     for y in range(2016, (datetime.datetime.now().year + 5)):
         year_dropdown.append((y, y))
-    month = models.IntegerField(('year'), choices=year_dropdown, default=datetime.datetime.now().year)
-    day_dropdown = []
-    for d in range(0, (datetime.datetime.now().day + 30)):
-        day_dropdown.append((d, d))
-    day = models.IntegerField(('day'), choices=day_dropdown, default=datetime.datetime.now().day)
+    year = models.IntegerField(max_length=4, choices=year_dropdown, default=datetime.datetime.now().year)
 
+    month_dropdown = []
+    month_name = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec']
+    for d in range(0, 12):
+        month_dropdown.append((d, month_name[d]))
+    month = models.IntegerField(max_length=2, choices=month_dropdown, default=datetime.datetime.now().month)
 
     #Billing Information
-    street_address = models.CharField(max_length=150)
-    city = models.CharField(max_length=30)
-    state = models.CharField(max_length=10)
-    postal = models.CharField(max_length=5)
-    country = models.CharField(max_length=10)
+    street_address = models.CharField(max_length=150, default='', null=False)
+    city = models.CharField(max_length=30, default='', null=False)
+    state = models.CharField(max_length=10, default='', null=False)
+    postal = models.CharField(max_length=5, default='', null=False)
+    country = models.CharField(max_length=10, default='', null=False)
+
+    def __unicode__(self):
+       return self.user.first_name + " " + self.user.last_name
 
 
 class BookRating(models.Model):
