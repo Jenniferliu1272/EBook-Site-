@@ -102,19 +102,19 @@ class sell_form_original(forms.ModelForm):
 class buy_form(forms.ModelForm):
     class Meta:
         model = Payment
-        fields = ('credit_card', 'first_name','last_name','cvv','street_address','city','state','postal', 'country', 'month', 'day')
+        fields = ['credit_card', 'first_name','last_name','cvv','street_address','city','state','postal', 'country', 'year', 'month']
+        exclude = ['user']
 
     def __init__(self, *args, **kwargs):
         super(buy_form, self).__init__(*args, **kwargs)
-        self.fields['credit_card'].widget.attrs.update({'class': 'form-control'})
-        self.fields['first_name'].widget.attrs.update({'class': 'form-control'})
-        self.fields['last_name'].widget.attrs.update({'class': 'form-control'})
-        self.fields['cvv'].widget.attrs.update({'class': 'form-control'})
-        self.fields['street_address'].widget.attrs.update({'class': 'form-control'})
-        self.fields['city'].widget.attrs.update({'class': 'form-control'})
-        self.fields['state'].widget.attrs.update({'class': 'form-control'})
-        self.fields['postal'].widget.attrs.update({'class': 'form-control'})
-        self.fields['country'].widget.attrs.update({'class': 'form-control'})
-        self.fields['month'].widget.attrs.update({'class': 'dropdown'})
-        self.fields['day'].widget.attrs.update({'class': 'dropdown'})
+        self.fields['month'].widget.attrs.update({'class': 'btn btn-primary'})
+        self.fields['year'].widget.attrs.update({'class': 'btn btn-primary'})
 
+    def save_buyForm(self, user_buying, commit=True):
+        new = super(buy_form, self).save(commit=False)
+        if new.user is None:
+            new.user = user_buying
+
+        if commit:
+            new.save()
+        return new
