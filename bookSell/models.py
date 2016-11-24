@@ -30,6 +30,8 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    def _get_books_for_sale(self):
+        return BookForSale.objects.filter(book=self.id)
 
     def _get_books_for_sale_count(self):
         return len(BookForSale.objects.filter(book=self.id))
@@ -39,7 +41,6 @@ class Book(models.Model):
         return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
 
 
-    books_for_sale_count = property(_get_books_for_sale_count)
     average_rating = property(_average_rating)
     def get_genre(self):
         if self.genre == 0:

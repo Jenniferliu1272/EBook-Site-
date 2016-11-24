@@ -7,6 +7,7 @@ from django.db.models import Q
 from bookSell.constants import genres
 from django.template.defaulttags import csrf_token
 from django.contrib import messages
+from django.db.models import F
 
 # page sorting on bookPage
 headers = {'cost':'asc',
@@ -51,14 +52,11 @@ def condition_view(request):
     return render(request, 'books/individual_book/book_view.html', )
 	
 def purchase_history(request):
-	books_bought = BookForSale.objects.filter(userBought=request.user)
-	if(len(books_bought) == 0):
-		return render(request,'books/purchase_history/purchase_empty.html')
-	else:
-		books = Book.objects.filter(title = books_bought[0].book.title)
-		for b in books_bought[1:]:
-			books = books | Book.objects.filter(title = b.book.title)
-		return render(request,'books/purchase_history/purchase.html', {'books':books})
+    books_bought = BookForSale.objects.filter(userBought=request.user)
+    if(len(books_bought) == 0):
+        render(request,'books/purchase_history/purchase_empty.html')
+    else:
+        return render(request,'books/purchase_history/purchase.html', {'books':books_bought})
 
 
 def book_rating(request, book_id):
