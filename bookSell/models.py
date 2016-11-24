@@ -30,17 +30,15 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
-    def _get_books_for_sale(self):
-        return BookForSale.objects.filter(book=self.id)
-
     def _get_books_for_sale_count(self):
-        return len(BookForSale.objects.filter(book=self.id))
+        books_for_sale = BookForSale.objects.filter(book=self.id,sold=False)
+        return len(books_for_sale)
 
     def _average_rating(self):
         ratings = BookRating.objects.filter(book=self.id)
         return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
 
-
+    books_for_sale_count = property(_get_books_for_sale_count)
     average_rating = property(_average_rating)
     def get_genre(self):
         if self.genre == 0:
@@ -82,9 +80,16 @@ class BookForSale(models.Model):
     )
 
     def _rating(self):
-        return UserRating.objects.get(book=self.id)
+        return UserRating.objects.filter(book=self.id).first()
+    
+    rating = property(_rating) 
 
-    rating = property(_rating)    
+    def _seller_rating(self):
+        ratings = UserRating.objects.filter(book__userSelling=self.userSelling.id)
+        return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
+
+    seller_rating = property(_seller_rating)
+   
     def __str__(self):
         return self.book.title
         #+ " sold by " + self.userSelling.username
@@ -100,8 +105,8 @@ class UserProfile(models.Model):
     firstname = models.CharField(max_length=30)
     lastname = models.CharField(max_length=30)
     def _average_rating(self):
-        ratings = UserRating.objects.filter(BookForSale__UserSold=self.id)
-        return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
+        return UserRating.objects.filter(BookForSale__UserSold=1)
+        #return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
 
     average_rating = property(_average_rating)
 
@@ -159,6 +164,6 @@ class UserRating(models.Model):
     book = models.ForeignKey(BookForSale, on_delete=models.CASCADE)
 
     def __unicode__(self):
-        return self.book.book.title + " " + self.book.userBought.firstname
+        return self.book.book.title
 
 

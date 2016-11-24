@@ -12,7 +12,8 @@ from django.db.models import F
 # page sorting on bookPage
 headers = {'cost':'asc',
          'condition':'asc',
-         'userSelling':'asc'}
+         'userSelling':'asc',
+         'userRating':'asc'}
 def book(request, book_id):
     sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
     book = get_object_or_404(Book, pk=book_id)
