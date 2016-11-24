@@ -110,6 +110,8 @@ class UserProfile(models.Model):
 
     average_rating = property(_average_rating)
 
+    wishlist = models.ManyToManyField(Book)
+
     # Override the __unicode__() method to return out something meaningful!
     def __unicode__(self):
         return self.user.username

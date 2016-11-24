@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^user_rating/(?P<book_for_sale>[0-9]+)/$', views.user_rating, name='user_rating'),
     url(r'^purchase_history', views.purchase_history, name='purchase_history'),
     url(r'^selling', views.selling, name='selling'),
+    url(r'^wishlist', views.wishlist, name='wishlist'),
 
 
 	#Sell Urls

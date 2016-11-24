@@ -7,7 +7,6 @@
 			{% if book.rating %}
 				rated at {{book.rating.rating}}/5
 			{% else %}
-
 				<a href="{% url 'user_rating' book.id %}"> Rate user selling book </a>
 			{% endif %}
 			{% if condition == True %}

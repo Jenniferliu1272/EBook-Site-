@@ -16,11 +16,25 @@ headers = {'cost':'asc',
          'userRating':'asc'}
 
 def book(request, book_id):
+    if(request.GET.get('delfav')):
+        user = get_object_or_404(UserProfile, user__id=request.user.id)
+        user.wishlist.remove(params['x'])
+        user.save()
+
+    if(request.GET.get('add_fav')):
+        user = get_object_or_404(UserProfile, user__id=request.user.id)
+        user.wishlist.add(book_id)
+        user.save()
+
     sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
     book = get_object_or_404(Book, pk=book_id)
     books_for_sale = BookForSale.objects.filter(book=book_id).order_by(sort)
     ratings = BookRating.objects.filter(book=book_id)
     has_not_reviewed = not any(b.user.user.id == request.user.id for b in ratings)
+    inWishlist = len(UserProfile.objects.filter(user__id=request.user.id, wishlist__id=book_id)) > 0
+    wishlistText = "Add to wishlist" if not inWishlist else "Remove from wishlist"
+    wishlistName = "add_fav" if not inWishlist else "del_fav"
+    print inWishlist
     if headers[sort] == "des":
         books_for_sale = books_for_sale.reverse()
         headers[sort] = "asc"
@@ -32,7 +46,9 @@ def book(request, book_id):
         'len': len(books_for_sale),
         'genres' : genres, 
         'ratings':ratings,
-        'has_not_reviewed' : has_not_reviewed
+        'has_not_reviewed' : has_not_reviewed,
+        'wishlistText' : wishlistText,
+        'wishlistName' : wishlistName
         })
 
 def search(request):
@@ -59,6 +75,15 @@ def purchase_history(request):
         render(request,'books/purchase_history/purchase_empty.html')
     else:
         return render(request,'books/purchase_history/purchase.html', {'books':books_bought})
+
+def wishlist(request):
+    if request.method == "POST":
+        params = {y:x for x,y in request.POST.iteritems()}
+        user = get_object_or_404(UserProfile, user__id=request.user.id)
+        user.wishlist.remove(params['x'])
+        user.save()
+    books = get_object_or_404(UserProfile, user__id=request.user.id).wishlist.all()
+    return render(request, 'books/wishlist/wishlist.html', {'books':books} )
 
 def selling(request):
     books_sold = BookForSale.objects.filter(userBought=request.user, sold=True)

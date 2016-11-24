@@ -4,6 +4,9 @@
 <div class="col-md-8 col-md-offset-2">
 	<div class="page-header">
 	  <h1>{{book.title}} <small>by {{book.author}}</small></h1>
+	  <form method="get">
+		<input type="submit" value="{{wishlistText}}" name="{{wishlistName}}" id="start_submit" class="btn btn-primary">
+		</form>
 	  <h5> {{book.get_genre_display}} Book</h5>
 	</div>
 	<p> {{book.description}} </p>
@@ -11,6 +14,8 @@
 	{% if book.cover_image %}
 		<p><img src="{{book.cover_image.url}}"></p>
 	{% endif %}
+
+
 	<br>
 	{% if books_for_sale %}
 	<h3> Copies For Sale: </h3>
