@@ -29,6 +29,7 @@ def book(request, book_id):
         user.wishlist.add(book_id)
         user.save()
 
+    sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
     book = get_object_or_404(Book, pk=book_id)
     books_for_sale = BookForSale.objects.filter(book=book_id).order_by(sort)
 
@@ -40,7 +41,6 @@ def book(request, book_id):
     wishlistText = "Add to wishlist" if not inWishlist else "Remove from wishlist"
     wishlistName = "add_fav" if not inWishlist else "del_fav"
 
-    sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
     if headers[sort] == "des":
         books_for_sale = books_for_sale.reverse()
         headers[sort] = "asc"
