@@ -3,10 +3,19 @@
 {% block content %}
 <div class="col-md-8 col-md-offset-2">
 	<div class="page-header">
-	  <h1>{{book.title}} <small>by {{book.author}}</small></h1>
-	  <form method="get">
-		<input type="submit" value="{{wishlistText}}" name="{{wishlistName}}" id="start_submit" class="btn btn-primary">
+	  <h1>{{book.title}} <small>by {{book.author}}</small>
+
+	  {% if inWishlist %}
+	  	  <form method="get">
+			<input type="submit" name="delfav" value ="Remove from wishlist" class="btn btn-primary">
 		</form>
+	   {% else %}
+	   		<br>
+			<a href="{% url 'add_fav' book.id %}" class="btn btn-primary">
+  				<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+			</a>
+		{% endif %}
+		</h1>
 	  <h5> {{book.get_genre_display}} Book</h5>
 	</div>
 	<p> {{book.description}} </p>

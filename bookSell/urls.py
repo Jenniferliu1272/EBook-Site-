@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^purchase_history', views.purchase_history, name='purchase_history'),
     url(r'^selling', views.selling, name='selling'),
     url(r'^wishlist', views.wishlist, name='wishlist'),
+    url(r'^add_fav/(?P<book_id>[0-9]+)/$', views.add_fav, name='add_fav'),
 
 
 	#Sell Urls

@@ -38,6 +38,11 @@ class UserRatingForm(forms.ModelForm):
         model = UserRating
         fields = ['comment', 'book', 'rating']
 
+class AddFavorite(forms.ModelForm):
+    class Meta:
+        model = Wishlist
+        fields = ['book', 'costLessThan', 'betterConditionThan', 'user']
+
 
 """
 Form for selling a book that already exist in the

@@ -7,23 +7,28 @@
 		<ul class="list-group">
 		{% for list in wishlist %}
 			<li class="list-group-item">
-				<a href="{% url 'book' list.book.id %}">{{ list.book.title }}</a> by {{list.book.author}}
+				<h3><a href="{% url 'book' list.book.id %}">{{ list.book.title }}</a> by {{list.book.author}}
 				for less than ${{list.costLessThan}} and in better than {{list.get_betterConditionThan_display}} condition
-				<table class="table">
-					<th><a href="?sortBook=condition"> Condition </a></th>
+				</h3>
+				{% if books_for_sale %}
+					<table class="table">
+						<th><a href="?sortBook=condition"> Condition </a></th>
 
-					<th><a href="?sortBook=cost"> Cost </a></th>
-					<th><a href="?sortBook=userSelling"> Sold By </a></th>
-					<th> <a href="?sortBook=userRating">User Rating </a></th>
-					<th></th>
-					{% for book in books_for_sale %}
-						{% include "books/individual_book/book_for_sale.html" %}
-					{% endfor %}
-				</table>
+						<th><a href="?sortBook=cost"> Cost </a></th>
+						<th><a href="?sortBook=userSelling"> Sold By </a></th>
+						<th> <a href="?sortBook=userRating">User Rating </a></th>
+						<th></th>
+						{% for book in books_for_sale %}
+							{% include "books/individual_book/book_for_sale.html" %}
+						{% endfor %}
+					</table>
+				{% else %}
+					No copies currently match this criteria
+				{% endif %}
 				<span class="badge">{{list.book.books_for_sale_count}} for sale</span>
 				<form method="post" class="form-inline">
 					 {% csrf_token %}
-					<input type="submit" value="x" name="{{book.id}}"class="btn btn-danger">
+					 <button type="submit" value="{{list.book.id}}" name="book_id" class="btn btn-danger">X</button> 
 				</form>
 				{% if condition == True %}
 					<br/><br/>

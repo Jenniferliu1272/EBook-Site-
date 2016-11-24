@@ -20,13 +20,10 @@ def book(request, book_id):
 
     # delete from wishlist
     if(request.GET.get('delfav')):
+        print "here"
         wishlist = get_object_or_404(Wishlist, user=request.user, book=book)
+        print wishlist
         wishlist.delete()
-
-
-    # add to wishlist
-    if(request.GET.get('add_fav')):
-        Wishlist.objects.create(user=request.user, book=book, costLessThan=1, betterConditionThan=2 )
 
     sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'
     books_for_sale = BookForSale.objects.filter(book=book_id).order_by(sort)
@@ -52,8 +49,7 @@ def book(request, book_id):
         'genres' : genres, 
         'ratings':ratings,
         'has_not_reviewed' : has_not_reviewed,
-        'wishlistText' : wishlistText,
-        'wishlistName' : wishlistName
+        'inWishlist' : inWishlist,
         })
 
 def search(request):
@@ -83,9 +79,8 @@ def purchase_history(request):
 
 def wishlist(request):
     if request.method == "POST":
-        params = {y:x for x,y in request.POST.iteritems()}
-        book = get_object_or_404(Book, pk=params['x'])
-        wishlist = get_object_or_404(Wishlist, user=request.user, book=book)
+        book = get_object_or_404(Book, pk=request.POST['book_id'])
+        wishlist = Wishlist.objects.filter(user=request.user, book=book).first()
         wishlist.delete()
     
     wishlist = Wishlist.objects.filter(user=request.user)
@@ -94,12 +89,11 @@ def wishlist(request):
         book = w.book
         book_for_sale = BookForSale.objects.filter(book=book, cost__lte=w.costLessThan, condition__gte=w.betterConditionThan)
         books_for_sale = books_for_sale  + list(book_for_sale)
-    print books_for_sale
     return render(request, 'books/wishlist/wishlist.html', {'wishlist':wishlist, 'books_for_sale' :books_for_sale} )
 
 def selling(request):
-    books_sold = BookForSale.objects.filter(userBought=request.user, sold=True)
-    books_for_sale = BookForSale.objects.filter(userBought=request.user, sold=False)
+    books_sold = BookForSale.objects.filter(userSelling=request.user, sold=True)
+    books_for_sale = BookForSale.objects.filter(userSelling=request.user, sold=False)
     profit = sum(b.cost for b in books_sold)
     ratings = UserRating.objects.filter(book__userSelling=1)
     rating = sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
@@ -113,6 +107,24 @@ def selling(request):
         'total_earnings' : total_earnings,
         'rating' : rating   
         })
+
+def add_fav(request, book_id):
+    book = Book.objects.filter(id=book_id).first()
+    fav_form = AddFavorite(request.POST or None, request.FILES or None)
+    if request.method == 'POST':
+        favorite = request.POST.copy()
+        favorite['user'] = request.user.id
+        favorite['book'] = book.id
+        form = AddFavorite(favorite)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Wishlist submission successful')
+            return HttpResponseRedirect('/book/%s/' % book_id)                                     
+        else:
+            messages.error(request, 'Wishlist submission unsuccessful')
+
+    # Render the template depending on the context.
+    return render(request, 'books/wishlist/add_new.html',{'form': fav_form, 'book': book})
 
 def book_rating(request, book_id):
     book = Book.objects.filter(id=book_id)[0]

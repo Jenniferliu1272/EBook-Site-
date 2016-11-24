@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-md-8 col-md-offset-2">
+		<center>
+		<h2> Add {{book.title}} to wishlist </h2>
+
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+			<form id="add_wishlist" method="post" action="/add_fav/{{book.id}}/" enctype="multipart/form-data">
+				{% csrf_token %}
+                <label for ="costLessThan"> Cost less than </label>
+                  <input type="number" name="costLessThan" min="0" max="100" step="1" value="30">
+                  <label for ="betterConditionThan"> Condition Greater than </label>
+                  <select name ="betterConditionThan">
+                      <option value="0">Poor</option>
+                      <option value="1">Fair</option>
+                      <option value="2">Good</option>
+                      <option value=3>New</option>
+                   </select>   
+				<input type="submit" name="submit" value="Submit" />
+			</form>
+		</center>
+</div>
+{% endblock %}
