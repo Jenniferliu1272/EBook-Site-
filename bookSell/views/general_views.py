@@ -170,3 +170,6 @@ def user_rating(request, book_for_sale):
 
     # Render the template depending on the context.
     return render(request, 'books/user_rating.html',{'book_rating': rating_form, 'book': book_for_sale})
+
+def wishlist_count(request):
+    return {'wishlist_count': len(Wishlist.objects.filter(user=request.user.id))}

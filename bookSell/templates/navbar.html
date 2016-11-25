@@ -52,7 +52,7 @@
             <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">My Eco Scrapbook <b class="caret"></b></a>
               <ul class="dropdown-menu" id="menu2">
-                <li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+                <li><a href="{% url 'wishlist' %}">Wishlist  <span class="badge">{{wishlist_count}}</span></a></li>
                   <li><a href="{% url 'selling' %}">Selling</a></li>
                 <li class="divider"></li>
                 <li><a href="{% url 'purchase_history' %}">Purchase History</a></li>
