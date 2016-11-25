@@ -45,6 +45,31 @@
 			<p class="arrow-right" onclick="swipe-left">></p>
 		</div>
 	</div>
+	
+	{% if user.is_authenticated %}
+		<div class="row">
+			<center><h1>Recommended Books For You</h1></center>
+			<div id="backdrop">
+				<p class="arrow-left"><</p>
+				<div class="center-block">
+					{% if recommended_books %}
+						{% for book in recommended_books %}
+							{% if forloop.counter0 < 4 %}
+								<div class="book-{{forloop.counter0}}">
+									<a href="{% url 'book' book.id %}" class="book-thumbnail thumbnail">
+									  <img src="{% static 'bookSell/images/books/Biographies.jpg' %}" alt="{{book}}" >
+									</a>
+								</div>
+							{% endif %}
+						{% endfor %}
+					{% else %}
+						<h1 style="color:white;">No books are available</h1>
+					{% endif %}
+				</div>
+				<p class="arrow-right" onclick="swipe-left">></p>
+			</div>
+		</div>
+	{% endif %}
 
 	<!--{% if user.is_authenticated %}
 	<h1>Hello {{ user.username }}!</h1>
