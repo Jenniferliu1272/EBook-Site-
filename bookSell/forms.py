@@ -18,15 +18,16 @@ class UserForm(forms.ModelForm):
         self.fields['password'].widget.attrs.update({'class': 'form-control'})
 
 class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ['firstname', 'lastname', 'phone']
+	class Meta:
+		model = UserProfile
+		fields = ['firstname', 'lastname', 'phone','favorite_genre']
+		widgets = {'favorite_genre':forms.RadioSelect}
 
-    def __init__(self, *args, **kwargs):
-        super(UserProfileForm, self).__init__(*args, **kwargs)
-        self.fields['firstname'].widget.attrs.update({'class': 'form-control'})
-        self.fields['lastname'].widget.attrs.update({'class': 'form-control'})
-        self.fields['phone'].widget.attrs.update({'class': 'form-control'})
+	def __init__(self, *args, **kwargs):
+		super(UserProfileForm, self).__init__(*args, **kwargs)
+		self.fields['firstname'].widget.attrs.update({'class': 'form-control'})
+		self.fields['lastname'].widget.attrs.update({'class': 'form-control'})
+		self.fields['phone'].widget.attrs.update({'class': 'form-control'})
 
 class BookRatingForm(forms.ModelForm):
     class Meta:

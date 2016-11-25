@@ -98,20 +98,35 @@ class BookForSale(models.Model):
 
 class UserProfile(models.Model):
 	# This line is required. Links UserProfile to a User model instance.
-    user = models.OneToOneField(User)
+	user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-    phone = models.CharField(max_length=30)
-    firstname = models.CharField(max_length=30)
-    lastname = models.CharField(max_length=30)
-    def _average_rating(self):
-        return UserRating.objects.filter(BookForSale__UserSold=1)
+	phone = models.CharField(max_length=30)
+	firstname = models.CharField(max_length=30)
+	lastname = models.CharField(max_length=30)
+	
+	genres_available = (
+		(0, 'Science Fiction'),
+		(1, 'Drama'),
+		(2, 'Action and Adventure'),
+		(3, 'Romance'),
+		(4, 'Mystery'),
+		(5, 'Health'),
+		(6, 'Children'),
+		(7, 'Science'),
+		(8, 'History'),
+		(9, 'Biographies')
+	)
+	favorite_genre = models.IntegerField(choices=genres_available)
+	
+	def _average_rating(self):
+		return UserRating.objects.filter(BookForSale__UserSold=1)
         #return sum(r.rating for r in ratings) / len(ratings) if len(ratings) > 0 else 0
 
-    average_rating = property(_average_rating)
+	average_rating = property(_average_rating)
     # Override the __unicode__() method to return out something meaningful!
-    def __unicode__(self):
-        return self.user.username
+	def __unicode__(self):
+		return self.user.username
 
 class Payment(models.Model):
     user = models.OneToOneField(User, null=True, related_name="user")
