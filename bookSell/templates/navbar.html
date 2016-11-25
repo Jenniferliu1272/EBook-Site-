@@ -11,9 +11,9 @@
         <form method="get" action="/results/" class="form-width">
         <div class="input-group search_option btn-group dropdown">
           <span class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{genre}} <span class="caret"></span></button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{genre_list.0}} <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              {% for genre in genres %}
+              {% for genre in genre_list %}
                   <li><a href="{% url 'genre' genre %}">{{genre}}</a></li>
               {% endfor %}
             </ul>

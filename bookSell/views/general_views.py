@@ -173,3 +173,6 @@ def user_rating(request, book_for_sale):
 
 def wishlist_count(request):
     return {'wishlist_count': len(Wishlist.objects.filter(user=request.user.id))}
+
+def genre_list(request):
+    return{'genre_list': genres}

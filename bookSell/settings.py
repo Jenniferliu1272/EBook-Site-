@@ -87,6 +87,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'bookSell.views.wishlist_count',
+                'bookSell.views.genre_list',
+
 
             ],
         },
