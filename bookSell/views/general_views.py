@@ -73,7 +73,7 @@ def condition_view(request):
 def purchase_history(request):
     books_bought = BookForSale.objects.filter(userBought=request.user)
     if(len(books_bought) == 0):
-        render(request,'books/purchase_history/purchase_empty.html')
+        return render(request,'books/purchase_history/purchase_empty.html')
     else:
         return render(request,'books/purchase_history/purchase.html', {'books':books_bought})
 
