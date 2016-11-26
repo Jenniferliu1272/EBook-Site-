@@ -44,7 +44,6 @@ def sell_original(request):
             new_book = current_og_form.save_sellFormOriginal()
             current_form = current_form.save_sellFormExisiting(book_id=new_book.id, user=request.user)
             book_obj = Book.objects.get(id=new_book.id)
-            #current_form = sell_form_existing(request.POST, instance=book_obj)
             return render(request, 'books/sellBuyForm/sell_confirm.html', {'book': book_obj, 'sell_form': current_form })
         else:
             return render(request, 'books/sellBuyForm/sell_original.html', {'sell_form': sell_form_existing(),

@@ -1,13 +1,9 @@
+{% extends "base.html" %}
 {% load static %}
-
-{% load bootstrap3 %}
-{# Load CSS and JavaScript #}
-{% bootstrap_javascript %}
-{% bootstrap_css %}
 
 {% block content %}
     {% include "books/sellBuyForm/header.html" %}
-    <div class="col-md-8 col-md-offset-2">
+    <div class="padding-header col-md-8 col-md-offset-2">
         <form action="" method="POST">
             {% csrf_token %}
             <a href="{% url 'sell_search' %}">
@@ -27,7 +23,6 @@
                 <div class="padding">Genre: {{ sell_form_add.genre }}</div>
                 <div class="padding">Description: {{ sell_form_add.description }}</div>
                 <div class="padding">Cover Image: {{ sell_form_add.cover_image }}</div>
-
               </div>
             </div>
             <div class="panel panel-default">
@@ -44,9 +39,8 @@
                 <h6>PayPal email address</h6>
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    useremail@host.com
                     <!--When user registration is done -->
-                    <!--{{ request.user.email }}-->
+                    {{ request.user.email }}
                   </div>
                 </div>
               </div>

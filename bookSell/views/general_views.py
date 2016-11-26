@@ -20,9 +20,9 @@ def book(request, book_id):
 
     # delete from wishlist
     if(request.GET.get('delfav')):
-        print "here"
+        print ("here")
         wishlist = get_object_or_404(Wishlist, user=request.user, book=book)
-        print wishlist
+        print (wishlist)
         wishlist.delete()
 
     sort = request.GET.get('sort') if request.GET.get('sort') is not None else 'cost'

@@ -61,4 +61,4 @@ def register(request):
 		profile_form = UserProfileForm()
 
     # Render the template depending on the context.
-	return render_to_response('register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered, 'genres': genres, 'genre': genres[0]},RequestContext(request))
+	return render(request, 'register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered, 'genres': genres, 'genre': genres[0]})

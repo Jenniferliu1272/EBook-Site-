@@ -1,24 +1,29 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-    <body>
-		<center>
-			<h1>Login to bookSell</h1>
+   <link rel="stylesheet" type="text/css" href="{% static 'bookSell/register.css' %}" />
+	<style>
+		.margin-bottom{
+			margin-bottom: 50px;
+		}
+	</style>
+   <div class="margin-bottom row">
+		<div class="col-md-8 col-md-offset-2">
+			<h1>Login</h1>
 
-			<form id="login_form" method="post" action="/login/">
+			<form id="user_form" method="post" action="{% url 'login' %}">
 				{% csrf_token %}
-				
+
 				{% if form.errors %}
 					{{ form.errors }}
 				{% endif %}
-				
-				Username: <input type="text" name="username" value="" size="50" />
+				Username: <input type="text" name="username" class="form-control"/>
 				<br />
-				Password: <input type="password" name="password" value="" size="50" />
+				Password: <input type="password" name="password" class="form-control" />
 				<br />
-
-				<input type="submit" value="submit" />
+				<input type="submit" value="Login" class="btn btn-default" />
 			</form>
-		</center>
-    </body>
+		</div>
+	</div>
 {% endblock %}

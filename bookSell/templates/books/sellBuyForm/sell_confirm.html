@@ -1,9 +1,6 @@
+{% extends "base.html" %}
 {% load static %}
 
-{% load bootstrap3 %}
-{# Load CSS and JavaScript #}
-{% bootstrap_javascript %}
-{% bootstrap_css %}
 
 {% block content %}
     {% include "books/sellBuyForm/header.html" %}
@@ -13,7 +10,7 @@
         }
     </style>
     <!-- Form -->
-    <div class="col-md-8 col-md-offset-2">
+    <div class="padding-header col-md-8 col-md-offset-2">
         <a href="{% url 'sell_existing' book.id %}">
             <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Change Details
         </a>
@@ -49,9 +46,7 @@
             <h6>PayPal email address</h6>
             <div class="panel panel-default">
               <div class="panel-body">
-                useremail@host.com
-                <!--When user registration is done -->
-                <!--{{ request.user.email }}-->
+                {{ request.user.email }}
               </div>
             </div>
           </div>
@@ -59,10 +54,10 @@
         <div class="well well-lg">
           <center>Thank you for contributing to EcoBooks!
           We hope your experience selling with us was a pleasant one.</center>
-          <div class="center">
+          <center>
             <a class="center-btn btn btn-default" href="{% url 'index' %}">Confirm</a>
             <a class="center-btn btn btn-default" href="{% url 'index' %}">Cancel</a>
-          </div>
+          </center>
         </div>
     </div>
     <!-- EndForm -->

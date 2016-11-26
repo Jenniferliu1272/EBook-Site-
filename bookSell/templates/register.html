@@ -2,8 +2,13 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'bookSell/register.css' %}" />
-	<div id="background" class="row">
+	<link rel="stylesheet" type="text/css" href="{% static 'bookSell/register.css' %}" />
+	<style>
+		.margin-bottom{
+			margin-bottom: 50px;
+		}
+	</style>
+	<div class="margin-bottom row">
 		<div class="col-md-8 col-md-offset-2">
 			<h1>Register</h1>
 
@@ -12,8 +17,7 @@
 			<a href="/">Return to the homepage.</a><br />
 			{% else %}
 
-			<form id="user_form" method="post" action="/register/">
-				{% csrf_token %}
+			<form id="user_form" method="post" action="/register/" enctype="multipart/form-data">
 				{{ user_form }}
 				{{ profile_form }}
 				<!-- Provide a button to click to submit the form. -->

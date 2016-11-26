@@ -168,9 +168,10 @@ footer {
   margin: 0 auto; }
 
 .input-group-btn:last-child > .btn {
-  height: 34px;
+
   background: #142126;
-  color: white; }
+  color: white;
+ }
 
 .navbar-default .navbar-nav > li > a:focus {
   color: white; }

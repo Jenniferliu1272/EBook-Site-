@@ -3,44 +3,30 @@ $(document).ready(function(){
         $("#searchBox").css("z-index", "-100");
         $("footer").css("z-index","-100");
         $(".col-md-8").css("z-index","-100");
+        $("button").css("z-index", "-100");
     });
 });
 
 /* Shop By Category */
 
-$(document).ready(function(){
-    var obj = {
-      ".col-0": [".m-0",".text-0"],
-      ".col-1": [".m-1",".text-1"],
-      ".col-2": [".m-2",".text-2"],
-      ".col-3": [".m-3",".text-3"],
-      ".col-4": [".m-4",".text-4"],
-      ".col-5": [".m-5",".text-5"],
-      ".col-6": [".m-6",".text-6"],
-      ".col-7": [".m-7",".text-7"]
-    };
-
-    $.each( obj, function( key, value ) {
-      $(key).hover(function(){
-            $(value[0]).css("opacity", "1");
-            $(value[1]).css("visibility", "hidden");
-            }, function(){
-            $(value[0]).css("opacity", "0.35");
-            $(value[1]).css("visibility", "visible");
-      });
-    });
-});
+function UrlExists(url)
+{
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status!=404;
+}
 
 function append_table(){
     //Book Title
-    var titles = ["Science <br>Fiction", "Drama", "Action<br> and <br>Adventure", "Romance", "Mystery", "Health",
+    var titles = ["Science<br>fiction", "Drama", "Action and<br>Adventure", "Romance", "Mystery", "Health",
                   "Children's", "Science", "History", "Biographies"]
 
     //Image title
     var image_title = ["ScienceFiction", "Drama", "ActionAdventure", "Romance", "Mystery", "Health",
                   "Children", "Science", "History", "Biographies"]
 
-    for(i = 0; i < 8; i++){
+    for(i = 0; i < titles.length; i++){
         var col = document.getElementsByClassName("col-" + i)[0];
 
         //Append Media
@@ -57,24 +43,53 @@ function append_table(){
 
         //Append links
         var link = document.createElement('a');
-        link.href = '#';
+        var reset = titles[i].replace(/<br>/, "%20");
+        if( i == 2 ){
+            link.href = 'genre/' + "Action%20and%20Adventure";
+        }
+        else{
+            link.href = 'genre/' + reset + '/';
+        }
         media_left.appendChild(link);
 
-        var title = document.createElement('h2');
-        title.className = 'text-center text-' + [i];
+        var title = document.createElement('h5');
+        title.className = 'text-' + [i];
         title.innerHTML = titles[i];
         col.appendChild(title);
 
         //Adding images
         var images = document.createElement("img");
-        images.src = "static//bookSell/images/books/Biographies.jpg";
+        if( UrlExists('static/bookSell/images/books/' + image_title[i] + ".jpg" ) == false ){
+           images.src = "static/bookSell/images/books/default.png"
+        }
+        else{
+           images.src = "static/bookSell/images/books/" + image_title[i] + ".jpg";
+        }
         link.appendChild(images);
     }
 }
 
+/* Swipe function, maybe I will implement
+ * If I have time */
+function swipe_left(){
+
+    var start;
+    var end;
+    for(var i=0; i < 10; i++){
+        //First element I see that is not hidden
+        if( $(".book-" + i).css('visibility') === 'visible' ){
+            start = i;
+            break;
+        }
+    }
+    end = start + 5;
+    $(".book-" + end).css('visibility', 'hidden');
+    start -= 1;
+    $(".book-" + start).css('visibility', 'visible');
+}
+
 window.onload = function() {
     append_table();
-    /*add_book();*/
 };
 
 /* Image */

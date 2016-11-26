@@ -1,32 +1,23 @@
 /* Shop By Category Section */
-
-.text-center{
-    top:90px;
-    left:0;
-    right:0;
-    bottom:0;
-    position:absolute;
-}
-
 .padding{
     margin: 10px;
 }
 
-@for $i from 0 through 7 {
+@for $i from 0 through 10 {
     .text-#{$i} {
         visibility: visible;
         font-size: 20px;
     }
     .m-#{$i} {
-        opacity: 0.35;
+        opacity: 1;
     }
 }
 
 /* Top Rated Books Section */
 
-#backdrop{
+.backdrop{
     width:100%;
-    height: 380px;
+    height: 430px;
     background-color: black;
     display: -webkit-flex;
     display: flex;
@@ -38,6 +29,7 @@
         float: left;
         margin: 30px;
         margin-top: 40px;
+        visibility: visible;
     }
 }
 

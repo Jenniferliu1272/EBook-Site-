@@ -8,7 +8,7 @@
 
 	<div class="row">
 		<center><h1>Shop By Category</h1></center>
-		<div id="categories" class="col-md-8 col-md-offset-2">
+		<div id="categories" class="col-md-10 col-md-offset-1">
 			<div class="padding row">
 				<div class="col-md-3 col-0"></div>
 				<div class="col-md-3 col-1"></div>
@@ -21,52 +21,68 @@
 				<div class="col-md-3 col-6"></div>
 				<div class="col-md-3 col-7"></div>
 			</div>
+			<div class="padding row">
+				<div class="col-md-3 col-8"></div>
+				<div class="col-md-3 col-9"></div>
+				<div class="col-md-3 col-10"></div>
+			</div>
 		</div>
 	</div>
 	<div class="row">
 		<center><h1>Browse our Top Rated Books</h1></center>
-		<div id="backdrop">
-			<p class="arrow-left"><</p>
+		<div class="backdrop">
+			<!--<button class="arrow-left" onclick="swipe_left()">DLL</button>-->
 			<div class="center-block">
 				{% if top_books %}
+					<div class="book-{{ forloop.counter0 }}"></div>
 					{% for book in top_books %}
-				        {% if forloop.counter0 < 4 %}
-                            <div class="book-{{forloop.counter0}}">
-                                <a href="{% url 'book' book.id %}" class="book-thumbnail thumbnail">
-                                  <img src="{% static 'bookSell/images/books/Biographies.jpg' %}" alt="{{book}}" >
-                                </a>
-                            </div>
-				        {% endif %}
+						{% if forloop.counter0 < 4 %}
+						<div class="book-{{forloop.counter0}}">
+							<a href="{% url 'book' book.id %}" class="book-thumbnail thumbnail">
+							  <img src="{% static 'bookSell/images/books/default.png' %}" alt="{{book}}" >
+							</a>
+							<p style="color:white;">
+								<strong>Title</strong>: {{book.title}}<br/>
+								<strong>Author</strong>: {{ book.author }}
+							</p>
+						</div>
+						{% endif %}
 					{% endfor %}
 				{% else %}
+					<div class="center-block">
 					<h1 style="color:white;">No books are available</h1>
+					</div>
 				{% endif %}
 			</div>
-			<p class="arrow-right" onclick="swipe-left">></p>
+			<!--<p class="arrow-right" onclick="swipe-left">></p>-->
 		</div>
 	</div>
 	
-	{% if user.is_authenticated %}
+	<{% if user.is_authenticated %}
 		<div class="row">
 			<center><h1>Recommended Books For You</h1></center>
-			<div id="backdrop">
-				<p class="arrow-left"><</p>
+			<div class="backdrop">
 				<div class="center-block">
 					{% if recommended_books %}
 						{% for book in recommended_books %}
 							{% if forloop.counter0 < 4 %}
-								<div class="book-{{forloop.counter0}}">
-									<a href="{% url 'book' book.id %}" class="book-thumbnail thumbnail">
-									  <img src="{% static 'bookSell/images/books/Biographies.jpg' %}" alt="{{book}}" >
-									</a>
-								</div>
+							<div class="book-{{forloop.counter0}}">
+							<a href="{% url 'book' book.id %}" class="book-thumbnail thumbnail">
+							  <img src="{% static 'bookSell/images/books/default.png' %}" alt="{{book}}" >
+							</a>
+							<p style="color:white;">
+								<strong>Title</strong>: {{book.title}}<br/>
+								<strong>Author</strong>: {{ book.author }}
+							</p>
+							</div>
 							{% endif %}
 						{% endfor %}
 					{% else %}
-						<h1 style="color:white;">No books are available</h1>
+						<div class="center-block">
+						<h1 style="color:white;">No Books available</h1>
+						</div>
 					{% endif %}
 				</div>
-				<p class="arrow-right" onclick="swipe-left">></p>
 			</div>
 		</div>
 	{% endif %}
