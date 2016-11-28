@@ -47,7 +47,7 @@ def sell_original(request):
             return render(request, 'books/sellBuyForm/sell_confirm.html', {'book': book_obj, 'sell_form': current_form })
         else:
             return render(request, 'books/sellBuyForm/sell_original.html', {'sell_form': sell_form_existing(),
-                                                                        'sell_form_add': sell_form_original()})
+                                                                        'sell_form_add': sell_form_original(), })
     else:
         return render(request, 'books/sellBuyForm/sell_original.html', {'sell_form': sell_form_existing(),
                                                                     'sell_form_add': sell_form_original()})
