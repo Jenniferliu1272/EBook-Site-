@@ -2,7 +2,38 @@
 {% load static %}
 
 {% block content %}
-    <div class="col-md-8 col-md-offset-2">
-        <p>Success</p>
+    <style>
+        .margin{
+            margin: 20px;
+        }
+        .margin-top{
+            margin-top: 20px;
+        }
+    </style>
+    <div class="margin-left col-md-8 col-md-offset-2">
+        <div class="margin">
+            <div class="panel panel-default">
+                <div class="panel-heading">Buy Confirmation</div>
+            </div>
+            <div class="panel panel-default">
+                  <div class="panel-heading">Book Information</div>
+                  <div class="panel-body">
+                    <strong>Book</strong>: {{ book.book.title }} <br>
+                    <strong>Author</strong>: {{ book.book.author }} <br>
+                    <strong>Year Published</strong>: {{ book.book.year_published }} <br>
+                    <strong>Genre</strong>: {{ genre }} <br>
+                    <strong>Description</strong>: {{ book.book.description }} <br>
+                  </div>
+            </div>
+            <div class="panel panel-default">
+                  <div class="panel-heading">Cost</div>
+                  <div class="panel-body">
+                    <strong>Condition</strong>: {{ book.condition }} <br>
+                    <strong>Rating</strong>: {{ book.rate }} <br>
+                    <strong>Cost</strong>: {{ book.cost }} <br>
+                    <strong>Seller</strong>: {{ book.userSelling }} <br>
+                  </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

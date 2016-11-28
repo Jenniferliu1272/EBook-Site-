@@ -32,7 +32,7 @@ def buy_book(request, book_id):
                 book.userBought = request.user
                 book.sold = True
                 book.save()
-                return render(request, 'books/buy_form/buy_confirm.html', {'buy_form': buying_form, 'book': book })
+                return render(request, 'books/buy_form/buy_confirm.html', {'buy_form': buying_form, 'book': book, 'genre': book.book.get_genre() })
             else:
                 return render(request, 'books/buy_form/buy.html', {'buy_form': buy_form(), 'book': book})
         else:
