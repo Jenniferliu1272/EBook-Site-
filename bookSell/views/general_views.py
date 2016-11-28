@@ -31,10 +31,6 @@ def book(request, book_id):
     ratings = BookRating.objects.filter(book=book_id)
     has_not_reviewed = not any(b.user.user.id == request.user.id for b in ratings)
 
-    # prepare text as needed to wishlist
-    inWishlist = len(Wishlist.objects.filter(user=request.user, book=book)) > 0
-    wishlistText = "Add to wishlist" if not inWishlist else "Remove from wishlist"
-    wishlistName = "add_fav" if not inWishlist else "del_fav"
 
     if headers[sort] == "des":
         books_for_sale = books_for_sale.reverse()
@@ -42,15 +38,29 @@ def book(request, book_id):
     else:
         headers[sort] = "des"
 
-    return render(request, 'books/individual_book/book_view.html', {
-        'book': book,
-        'books_for_sale': books_for_sale,
-        'len': len(books_for_sale),
-        'genres' : genres, 
-        'ratings':ratings,
-        'has_not_reviewed' : has_not_reviewed,
-        'inWishlist' : inWishlist,
-        })
+ # prepare text as needed to wishlist
+    if request.user.is_authenticated():
+        inWishlist = len(Wishlist.objects.filter(user=request.user, book=book)) > 0
+        wishlistText = "Add to wishlist" if not inWishlist else "Remove from wishlist"
+        wishlistName = "add_fav" if not inWishlist else "del_fav"
+
+        return render(request, 'books/individual_book/book_view.html', {
+            'book': book,
+            'books_for_sale': books_for_sale,
+            'len': len(books_for_sale),
+            'genres' : genres, 
+            'ratings':ratings,
+            'has_not_reviewed' : has_not_reviewed,
+            'inWishlist' : inWishlist,
+            })
+    else:
+        return render(request, 'books/individual_book/book_view.html', {
+            'book': book,
+            'books_for_sale': books_for_sale,
+            'len': len(books_for_sale),
+            'genres' : genres, 
+            'ratings':ratings
+            })
 
 def search(request):
     query = request.GET['q']

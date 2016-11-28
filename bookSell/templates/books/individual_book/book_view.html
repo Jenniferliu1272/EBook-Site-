@@ -9,7 +9,7 @@
 	  	  <form method="get">
 			<input type="submit" name="delfav" value ="Remove from wishlist" class="btn btn-primary">
 		</form>
-	   {% else %}
+	   {% elif user.is_authenticated %}
 			<a href="{% url 'add_fav' book.id %}" class="btn btn-primary"> Add to wishlist</a>
 		{% endif %}
 		</h1>
