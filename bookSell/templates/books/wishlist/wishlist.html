@@ -1,15 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-md-8 col-md-offset-2">
-	<h1> My Book Collection </h1>
+<style>
+	.float-right{
+		float: right;
+	}
+</style>
+<div class="col-md-8 col-md-offset-1">
+	<h2> My Book Collection </h2>
 	{% if wishlist %}
 		<ul class="list-group">
 		{% for list in wishlist %}
 			<li class="list-group-item">
+				<form method="post" class="form-inline">
+					 {% csrf_token %}
+					 <button type="submit" value="{{list.book.id}}" name="book_id" class="float-right btn btn-danger">x</button>
+				</form>
 				<h3><a href="{% url 'book' list.book.id %}">{{ list.book.title }}</a> by {{list.book.author}}
-				for less than ${{list.costLessThan}} and in better than {{list.get_betterConditionThan_display}} condition
 				</h3>
+				<br>
+				<p>for less than ${{list.costLessThan}} and in better than {{list.get_betterConditionThan_display}} condition</p>
+				<span class="badge">{{list.book.books_for_sale_count}} for sale</span>
 				{% if books_for_sale %}
 					<table class="table">
 						<th><a href="?sortBook=condition"> Condition </a></th>
@@ -25,11 +36,6 @@
 				{% else %}
 					No copies currently match this criteria
 				{% endif %}
-				<span class="badge">{{list.book.books_for_sale_count}} for sale</span>
-				<form method="post" class="form-inline">
-					 {% csrf_token %}
-					 <button type="submit" value="{{list.book.id}}" name="book_id" class="btn btn-danger">X</button> 
-				</form>
 				{% if condition == True %}
 					<br/><br/>
 					<a class="option" href="{% url 'sell_existing' book.id %}">Sell one like this</a>
