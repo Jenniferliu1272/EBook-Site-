@@ -1,9 +1,10 @@
 {% if books %}
-	{{ title }}
+	<h2>{{ title }}</h2>
 	<ul class="list-group">
 	{% for book in books %}
 		<li class="list-group-item">
-			<a href="{% url 'book' book.id %}">{{ book.book.title }}</a> by {{book.book.author}} by {{book.userSelling}} for ${{book.cost}}
+			<a href="{% url 'book' book.id %}">{{ book.book.title }}</a> by {{book.book.author}}<br/>
+			<strong> Solid By: </strong> {{book.userSelling}} for ${{book.cost}} <br/>
 			{% if book.rating %}
 				rated at {{book.rating.rating}}/5
 			{% else %}

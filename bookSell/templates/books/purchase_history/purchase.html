@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+    .margin{
+        margin: 20px;
+    }
+    .margin-top{
+        margin-top: 20px;
+    }
+</style>
 <div class="col-md-8 col-md-offset-2">
-    <div class = "row">
+    <div class = "margin row">
         <div class="col-md-5">
             {% include "books/purchase_history/purchased_book_list.html" with books=books title="Purchased Books" %}
         </div>
