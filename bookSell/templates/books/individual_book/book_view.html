@@ -10,13 +10,10 @@
 			<input type="submit" name="delfav" value ="Remove from wishlist" class="btn btn-primary">
 		</form>
 	   {% else %}
-	   		<br>
-			<a href="{% url 'add_fav' book.id %}" class="btn btn-primary">
-  				<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-			</a>
+			<a href="{% url 'add_fav' book.id %}" class="btn btn-primary"> Add to wishlist</a>
 		{% endif %}
 		</h1>
-	  <h5> {{book.get_genre_display}} Book</h5>
+	  <h5> Genre: {{book.get_genre_display}}</h5>
 	</div>
 	<p> {{book.description}} </p>
 	<br>
