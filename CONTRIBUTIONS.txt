@@ -1,0 +1,23 @@
+
+File: Contributions.txt
+Team: E-BookWorms
+Team Members: Jen Lamere, Jennifer, Liu, Ram Longman
+
+Contribution List:
+1) Search books - Jen
+2) Genre pages - Jen
+3) Top rated books - Jen
+4) Book/User ratings - Jen
+5) Add images to books - Jen
+6) Wishlist - Jen
+7) Seller profile - Jen
+8) Buy books - Jennifer
+9) Sell books - Jennifer
+10) UI work - Jennifer
+11) View pages and formating - Jennifer
+12) User registration - Ram
+13) Login/logout - Ram
+14) Purchase History - Ram
+15) Recommender - Ram
+16) Documentation and reports - Jen, Jennifer, and Ram
+17) Testing - Jen, Jennifer, and Ram
