@@ -38,8 +38,9 @@ def sell_existing(request, book_id, back):
 
 def sell_original(request):
     if request.method == 'POST':
-        current_og_form = sell_form_original(request.POST)
-        current_form = sell_form_existing(request.POST)
+        current_og_form = sell_form_original(request.POST, request.FILES)
+        current_form = sell_form_existing(request.POST, request.FILES)
+
         if current_form.is_valid():
             new_book = current_og_form.save_sellFormOriginal()
             current_form = current_form.save_sellFormExisiting(book_id=new_book.id, user=request.user)

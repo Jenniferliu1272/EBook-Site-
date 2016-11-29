@@ -4,7 +4,7 @@
 {% block content %}
     {% include "books/sellBuyForm/header.html" %}
     <div class="padding-header col-md-8 col-md-offset-2">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype='multipart/form-data'>
             {% csrf_token %}
             <a href="{% url 'sell_search' %}">
                 <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Change your category or item

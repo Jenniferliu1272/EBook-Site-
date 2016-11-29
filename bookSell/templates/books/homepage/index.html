@@ -39,7 +39,12 @@
 						{% if forloop.counter0 < 4 %}
 						<div class="book-{{forloop.counter0}}">
 							<a href="{% url 'book' book.id %}" class="book-thumbnail thumbnail">
-							  <img src="{% static 'bookSell/images/books/default.png' %}" alt="{{book}}" >
+							{% if book.cover_image %}
+							  <img src="{{book.cover_image.url}}"" alt="{{book}}" style="width:200px;">
+							{% else %}
+									<img src="{% static 'bookSell/images/books/default.png' %}" alt="{{book}}" >
+							{% endif %}
+
 							</a>
 							<p style="color:white;">
 								<strong>Title</strong>: {{book.title}}<br/>
@@ -68,7 +73,11 @@
 							{% if forloop.counter0 < 4 %}
 							<div class="book-{{forloop.counter0}}">
 							<a href="{% url 'book' book.id %}" class="book-thumbnail thumbnail">
-							  <img src="{% static 'bookSell/images/books/default.png' %}" alt="{{book}}" >
+							{% if book.cover_image %}
+							  <img src="{{book.cover_image.url}}"" alt="{{book}}" >
+							{% else %}
+									<img src="{% static 'bookSell/images/books/default.png' %}" alt="{{book}}" >
+							{% endif %}
 							</a>
 							<p style="color:white;">
 								<strong>Title</strong>: {{book.title}}<br/>
