@@ -25,9 +25,9 @@
             <div class="padding">Author: {{ book.author }}</div>
             <div class="padding">Description: {{ book.description }}</div>
             <div class="padding">Year: {{ book.year_published }}</div>
-            <div class="padding">genre: {{ book.genre }}</div>
+            <div class="padding">genre: {{ book.get_genre_display }}</div>
                 {% if book.cover_image %}
-                <img src="{{book.cover_image.url}}"" alt="{{book}}" >
+                <img src="{{book.cover_image.url}}" alt="{{book}}" >
               {% else %}
                   <img src="{% static 'bookSell/images/books/default.png' %}" alt="{{book}}" >
               {% endif %}
